@@ -57,11 +57,35 @@
     }
     </script>
     <script type="text/javascript">
-    function filterLessThan5() {
+    function filterOne() {
         $.ajax({
             url: "/projects/stars-app/server.php",
             type: "POST",
             data: "star_distance=" + $('.star_distance').val(),
+            dataType: "json",
+            success: function (response, status, http) {
+                console.log(response);
+                var new_suggestions = '';
+                $.each (response, function(index, item) {
+                    new_suggestions = new_suggestions + "<div id='starItem'>Name: " + item.name + "<br/>";
+                    new_suggestions = new_suggestions + "Distance: " + item.distance + "<br/>";
+                    new_suggestions = new_suggestions + "Constellaton: " + item.constellation + "<br/>";
+                    new_suggestions = new_suggestions + "</div>";
+                });
+                $('#suggestion_box').html(new_suggestions);
+            },
+            error: function (http, status, error) {
+                alert("Error: " + error);
+            }
+        });
+    }
+    </script>
+    <script type="text/javascript">
+    function filterTwo() {
+        $.ajax({
+            url: "/projects/stars-app/server.php",
+            type: "POST",
+            data: "star_distance_one=" + $('.star_distance_one').val(),
             dataType: "json",
             success: function (response, status, http) {
                 console.log(response);
@@ -145,8 +169,10 @@
                 <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12">
                     <div>
                         <h4>distance in light years from earth</h4>
-                        <button id="distanceFilterOne" class="btn btn-primary star_distance" name="star_distance" type="button" value="5" onclick="filterLessThan5();"> < 5 </button>
-                        
+                        <button id="distanceFilterOne" class="btn btn-primary star_distance" name="star_distance" type="button" value="5" onclick="filterOne();"> < 5 </button>
+                        <button id="distanceFilterTwo" class="btn btn-primary star_distance_one" name="star_distance_one" type="button" value="10" onclick="filterTwo();"> 5 - 10 </button>
+                        <button id="distanceFilterThree" class="btn btn-primary star_distance" name="star_distance" type="button" value="15" onclick="filterThree();"> 10 + </button>
+
                         <h2 class="heading">Search for a star name: </h2>
                         <input class="form-control" type="text" id="star_name" name="star_name" onkeyup="getStarDetails();"/>
                     </div>

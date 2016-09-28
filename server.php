@@ -4,6 +4,7 @@
 	$data = $_REQUEST; // store the data retrieved from ajax call
 	$name = $data['star_name']; // collect the input from form input 'star_name'
 	$distance = $_POST['star_distance'];
+	$distance_test = $_POST['star_distance_one'];
 
 	// result array
 	$result = array();
@@ -37,21 +38,30 @@ $distance_farther = 10;
 $distance_farthest = 15;
 
 // no distance selected, search for name
-if ($distance  == null) {
+if (($distance  != $distance_far)  && ($distance  != $distance_farther) && ($distance  != $distance_farthest) ) {
 	for( $count = 0 ; $count < count( $star_details ) ; $count++ ) {
 		if( stripos( $star_details[$count]['name'] , $name ) !== false ) {
 			array_push( $result , $star_details[$count] );
 		}
 	}
 }
-// distance selected..
-else {
+// distance selected...
+if ($distance == $distance_far) {
 	for( $count = 0 ; $count < count( $star_details ) ; $count++ ) {
-		if( $star_details[$count]['distance']  <= $distance ) {
+		if( $star_details[$count]['distance']  <= $distance_far ) {
 			array_push( $result , $star_details[$count] );
 		}
 	}
 }
+
+if ($distance_test == $distance_farther) {
+	for( $count = 0 ; $count < count( $star_details ) ; $count++ ) {
+		if( $star_details[$count]['distance']  <= $distance_farther ) {
+			array_push( $result , $star_details[$count] );
+		}
+	}
+}
+
 
 	// Return Response as JSON
 	echo json_encode( $result );
