@@ -43,7 +43,7 @@
                 console.log(response);
                 var new_suggestions = '';
                 $.each (response, function(index, item) {
-                    new_suggestions = new_suggestions + "<div id='starItem' style='margin-right: 10px; margin-bottom: 10px;'>Name: " + item.name + "<br/>";
+                    new_suggestions = new_suggestions + "<div id='starItem'>Name: " + item.name + "<br/>";
                     new_suggestions = new_suggestions + "Distance: " + item.distance + "<br/>";
                     new_suggestions = new_suggestions + "Constellaton: " + item.constellation + "<br/>";
                     new_suggestions = new_suggestions + "</div>";

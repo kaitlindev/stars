@@ -1,15 +1,15 @@
-<?php	
-	
+<?php
+
 	// receive the data from client
 	$data = $_REQUEST; // store the data retrieved from ajax call
 	$name = $data['star_name']; // collect the input from form input 'star_name'
-	
+
 	// result array
 	$result = array();
-	
+
 	// data array
-	$star_details = array( 
-		array('name' => 'Proxima Centauri', 'distance' => '4.243',  'constellation' => 'Centaurus',         'evolution' => 'Red Dwarf'),
+	$star_details = array(
+			array('name' => 'Proxima Centauri', 'distance' => '4.243',  'constellation' => 'Centaurus',         'evolution' => 'Red Dwarf'),
         array('name' => 'Alpha Centauri A', 'distance' => '4.37',   'constellation' => 'Centaurus',         'evolution' => 'Main Sequence'),
         array('name' => 'Alpha Centauri B', 'distance' => '4.37',   'constellation' => 'Centaurus',         'evolution' => 'Main Sequence'),
         array('name' => 'Barnards Star',    'distance' => '5.978',  'constellation' => 'Ophiuchus',         'evolution' => 'Red Dwarf'),
@@ -30,14 +30,14 @@
         array('name' => 'Procyon A',        'distance' => '11.46',  'constellation' => 'Canis Minor',       'evolution' => 'Main Sequence'),
         array('name' => 'Procyon B',        'distance' => '11.46',  'constellation' => 'Canis Minor',       'evolution' => 'White Dwarf')
 	);
-	
+
 	for( $count = 0 ; $count < count( $star_details ) ; $count++ ) {
 		if( stripos( $star_details[$count]['name'] , $name ) !== false ) {
 			array_push( $result , $star_details[$count] );
 		}
 	}
-	
+
 	// Return Response as JSON
 	echo json_encode( $result );
-	
+
 ?>
