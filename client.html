@@ -101,15 +101,15 @@
 
                         <!-- distance filters -->
                         <h4>distance in light years from earth</h4>
-                        <button id="distanceFilterOne" class="btn btn-primary star_distance_one" name="star_distance_one" type="button" value="5" onclick="filterOne();"> < 5 </button>
-                        <button id="distanceFilterTwo" class="btn btn-primary star_distance_two" name="star_distance_two" type="button" value="10" onclick="filterTwo();"> 5 - 10 </button>
-                        <button id="distanceFilterThree" class="btn btn-primary star_distance_three" name="star_distance_three" type="button" value="15" onclick="filterThree();"> 10 + </button>
+                        <button id="distanceFilterOne" class="btn btn-primary star_distance_one" name="star_distance_one" type="button" value="5" onclick="getStarsByDistanceFilterOne();"> < 5 </button>
+                        <button id="distanceFilterTwo" class="btn btn-primary star_distance_two" name="star_distance_two" type="button" value="10" onclick="getStarsByDistanceFilterTwo();"> 5 - 10 </button>
+                        <button id="distanceFilterThree" class="btn btn-primary star_distance_three" name="star_distance_three" type="button" value="15" onclick="getStarsByDistanceFilterThree();"> 10 + </button>
                       </div>
                       <div id="rightcolumn">
 
                           <!-- constellation dropdown -->
                           <h4>constellation where star belongs</h4>
-                          <select id="dd" class="dd form-control" onChange="ddConstellation();">
+                          <select id="dd" class="dd form-control" onChange="getStarsByConstellation();">
                             <option value="Andromeda" name="constellation" class="constellation">Andromeda</option>
                             <option value="Aquarius" name="constellation" class="constellation">Aquarius</option>
                             <option value="Canis Major" name="constellation" class="constellation">Canis Major</option>
@@ -129,7 +129,7 @@
 
                     <!-- name search -->
                     <h4>search star name</h4>
-                    <input class="form-control" type="text" id="star_name" name="star_name" onkeyup="getStarDetails();"/>
+                    <input class="form-control" type="text" id="star_name" name="star_name" onkeyup="getStarsByName();"/>
                     <div>
                         <p id="suggestion_box">See suggestions here.</p>
                     </div>

@@ -1,5 +1,5 @@
 /* Star name search */
-function getStarDetails() {
+function getStarsByName() {
     $.ajax({
         url: "/projects/stars-app/server.php",
         type: "POST",
@@ -23,7 +23,7 @@ function getStarDetails() {
 }
 
 /* Distance filter: <5 */
-function filterOne() {
+function getStarsByDistanceFilterOne() {
     $.ajax({
         url: "/projects/stars-app/server.php",
         type: "POST",
@@ -47,7 +47,7 @@ function filterOne() {
 }
 
 /* Distance filter: 5 - 10 */
-function filterTwo() {
+function getStarsByDistanceFilterTwo() {
     $.ajax({
         url: "/projects/stars-app/server.php",
         type: "POST",
@@ -71,7 +71,7 @@ function filterTwo() {
 }
 
 /* Distance filter: 10+ */
-function filterThree() {
+function getStarsByDistanceFilterThree() {
     $.ajax({
         url: "/projects/stars-app/server.php",
         type: "POST",
@@ -95,7 +95,7 @@ function filterThree() {
 }
 
 /* Constellation selector */
-function ddConstellation() {
+function getStarsByConstellation() {
     $.ajax({
         url: "/projects/stars-app/server.php",
         type: "POST",
