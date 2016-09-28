@@ -246,11 +246,11 @@ a:active {
      width: 422px;
 }
 
-#dd { 
+#dd {
     background-color: #734c53;
     border-color: #734c53;
-    color: #e5e5e5;
-    width: 65%;
+    color: #fff;
+    width: 100%;
 }
 
 
