@@ -3,6 +3,7 @@
 	// receive the data from client
 	$data = $_REQUEST; // store the data retrieved from ajax call
 	$name = $data['star_name']; // collect the input from form input 'star_name'
+	$distance = $_POST['star_distance'];
 
 	// result array
 	$result = array();
@@ -31,11 +32,26 @@
         array('name' => 'Procyon B',        'distance' => '11.46',  'constellation' => 'Canis Minor',       'evolution' => 'White Dwarf')
 	);
 
+$distance_far = 5;
+$distance_farther = 10;
+$distance_farthest = 15;
+
+// no distance selected, search for name
+if ($distance  == null) {
 	for( $count = 0 ; $count < count( $star_details ) ; $count++ ) {
 		if( stripos( $star_details[$count]['name'] , $name ) !== false ) {
 			array_push( $result , $star_details[$count] );
 		}
 	}
+}
+// distance selected..
+else {
+	for( $count = 0 ; $count < count( $star_details ) ; $count++ ) {
+		if( $star_details[$count]['distance']  <= $distance ) {
+			array_push( $result , $star_details[$count] );
+		}
+	}
+}
 
 	// Return Response as JSON
 	echo json_encode( $result );

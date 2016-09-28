@@ -214,6 +214,21 @@ a:active {
     margin-top: 10px;
 }
 
+#distanceFilterOne {
+  background-color: #4c375b;
+  border-color: #4c375b;
+}
+
+#distanceFilterTwo {
+  background-color: #5d4b6b;
+  border-color: #5d4b6b;
+}
+
+#distanceFilterThree {
+  background-color: #6f5e7b;
+  border-color: #6f5e7b;
+}
+
 /*************************
  * 04. Code
  *************************/
