@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- M E T A -->
+    <meta charset="utf-8">
+    <!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]-->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Simple app that demonstrates interaction between client and server with Ajax, PHP and JQuery.">
+    <meta name="keywords" content="Ajax, PHP, HTML, CSS, JavaScript, JQuery">
+    <meta name="author" content="Kaitlin Kidd">
+
+    <!-- F A V I C O N -->
+    <link rel="shortcut icon" type="image/x-icon" href="img/favicon.ico">
+
+    <!-- T I T L E -->
+    <title>Search the Stars - Ajax / PHP / JQuery</title>
+
+    <!-- C S S -->
+    <link type="text/css" rel="stylesheet" media="screen" href="css/bootstrap.min.css">
+    <link type="text/css" rel="stylesheet" media="screen" href="css/app.css">
+
+    <!-- F O N T S -->
+    <link type="text/css" rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
+    <link type="text/css" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Dosis">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- J A V A S C R I P T -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+    <script type="text/javascript">
+    function getStarDetails() {
+        $.ajax({
+            url: "/projects/stars-app/server.php",
+            type: "POST",
+            data: "star_name=" + $('#star_name').val(),
+            dataType: "json",
+            success: function (response, status, http) {
+                console.log(response);
+                var new_suggestions = '';
+                $.each (response, function(index, item) {
+                    new_suggestions = new_suggestions + "<div id='starItem' style='margin-right: 10px; margin-bottom: 10px;'>Name: " + item.name + "<br/>";
+                    new_suggestions = new_suggestions + "Distance: " + item.distance + "<br/>";
+                    new_suggestions = new_suggestions + "Constellaton: " + item.constellation + "<br/>";
+                    new_suggestions = new_suggestions + "</div>";
+                });
+                $('#suggestion_box').html(new_suggestions);
+            },
+            error: function (http, status, error) {
+                alert("Error: " + error);
+            }
+        });
+    }
+    </script>
+</head>
+<body>
+
+    <!-- N A V  -->
+    <!-- Navigation -->
+    <nav class="navbar navbar-default navbar-fixed-top topnav" role="navigation">
+        <div class="container topnav">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand topnav page-scroll" href="#hero">Search the Stars</a>
+            </div>
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                      <a href="#demo" class="page-scroll">Demo</a>
+                    </li>
+                    <li>
+                        <a href="#code" class="page-scroll">Code</a>
+                    </li>
+                    <li>
+                        <a href="#sources" class="page-scroll">Sources</a>
+                    </li>
+                    <li>
+                        <a href="http://kiddography.com/" target="_blank" >Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- H E R O  -->
+    <div id="hero">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div id="hero-heading">
+                        <h1>Search the Stars</h1>
+                        <h3>ajax + php application demonstrating client/server interaction</h3>
+                        <hr id="hero-hr">
+                        <a href="#demo" class="btn scroller page-scroll">
+                            <i class="fa fa-angle-double-down animated"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- D E M O -->
+    <div id="demo">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+                    <h2 class="heading">Demo</h2>
+                    <hr>
+                    <div class="clearfix"></div>
+                    <p class="subheading">Search for different stars by typing a letter or two. </p>
+                </div>
+                <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12">
+                    <div>
+                        <h2 class="heading">Star name: </h2>
+                        <input class="form-control" type="text" id="star_name" name="star_name" onkeyup="getStarDetails();"/>
+                    </div>
+                    <div>
+                        <p id="suggestion_box">See suggestions here.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- C O D E -->
+    <div id="code">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+                    <h2 class="heading">Code</h2>
+                    <hr>
+                    <div class="clearfix"></div>
+                    <p class="subheading">Take a look inside.</p>
+                </div>
+                <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12">
+
+                    <!-- client/server -->
+                    <h4>client/server interaction</h4>
+
+                    <p class="code-info">AJAX is essential for creating dynamic web pages where content can be updated seamlessly without the need for refreshing the whole page itself. When an event occurs, triggered by the user, data is exchanged between the browser and the server. When an http request is sent from the browser to the server, a response is created and the new/updated data is sent back to the browser to show the changed page content. </p>
+
+                     <p class="code-info">In this simple app, the current web page <span style="color:#9d8186;">(client.html) </span>acts as a client and a PHP file <span style="color:#9d8186;">(server.php) </span> is used to simulate a server. Data is exchanged between the client.html file and server.php file when triggered by a keyup event within the input field of the star name search box. Whenever a new character is entered or deleted from the input field, an <a class="link" href="http://api.jquery.com/jquery.ajax/" target="_blank"> ajax call</a> is made with the help of a JQuery script. </p>
+
+                    <!-- what it does -->
+                    <h4>What it does</h4>
+                    <p class="code-info">So what does this app actually do? A user will be able to search a small hard-coded array of star "objects", containing attributes such as name, distance (in light years) and the constellation that contains the star. The simulation of star "objects" will be shown in the server file code. As a character is entered or removed within the text field, results will be updated asynchronously. The code in order to do this will be explained more in depth below.</p>
+
+                    <h4>Client</h4>
+
+                    <p class="code-info">For our web page acting as the client, we have a basic input field with an id and function that is triggered <a class="link" href="http://www.w3schools.com/jsref/event_onkeyup.asp" target="_blank">onkeyup:</a></p>
+
+                    <pre><code>&lt;h2&gt;Star name: &lt;/h2&gt;<br />&lt;input class="form-control" type="text" id="star_name" name="star_name" onkeyup="getStarDetails();"/&gt;</code></pre>
+
+                    <p class="code-info">The results of the search will be appended to a paragraph tag below the input field using <a class="link" href="http://api.jquery.com/html/" target="_blank">.html( )</a>:</p>
+
+                    <pre><code>&lt;p id="suggestion_box"&gt;See suggestions here.&lt;/p&gt;</code></pre>
+
+                     <!-- ajax -->
+                     <h4>Ajax</h4>
+
+                     <p class="code-info">By importing the JQuery library, you can perform an asynchronous http request with $.ajax. The following function is needed to form the connection between client and server:</p>
+
+                    <pre><code>function getStarDetails() { <br />&#09;$.ajax({<br />&#09;&#09;url: "/server.php", // receiving URL<br />&#09;&#09;type: "POST", // POST request<br />&#09;&#09;data: "star_name=" + $('#star_name').val(), // data is formed by the value of the id 'star_name'<br />&#09;&#09;dataType: "json", // data will be send/retrieved in JSON format<br />&#09;&#09;success: function (response, status, http) { // if successful... <br />&#09;&#09;&#09;console.log(response);<br />&#09;&#09;&#09; var new_suggestions = ''; // form a string to append to the &lt;p&gt; with id 'suggestion_box' <br />&#09;&#09;&#09;$.each (response, function(index, item) { // for each item, find the name, distance and constellation and add to new_suggestions<br />&#09;&#09;&#09;&#09;new_suggestions = new_suggestions + "&lt;div&gt;Name: " + item.name + "&lt;br/&gt;";<br />&#09;&#09;&#09;&#09;new_suggestions = new_suggestions + "Distance: " + item.distance + "&lt;br/&gt;"; <br />&#09;&#09;&#09;&#09;new_suggestions = new_suggestions + "Constellaton: " + item.constellation + "&lt;br/&gt;";<br />&#09;&#09;&#09;&#09;new_suggestions = new_suggestions + "&lt;/div&gt;";<br />&#09;&#09;&#09;});<br />&#09;&#09;&#09;$('#suggestion_box').html(new_suggestions); // append with new_suggestions to the &lt;p&gt;<br />&#09;&#09;}, <br />&#09;&#09;error: function (http, status, error) { // if there's an error, show user<br />&#09;&#09;&#09;alert("Error: " + error);<br />&#09;&#09;}<br />&#09;});<br />}</code></pre>
+
+                    <p class="code-info">In the above function, if the ajax call is successful, the name, distance and constellation attributes of the star "objects" (in JSON format) will be appended to the &lt;p&gt;, which can be seen on <span style="color:#9d8186;">client.html</span> almost instantaneously. You can see where name, distance and constellation come from by viewing the contents of the <span style="color:#9d8186;">server.php </span>below. </p>
+
+                     <!-- server -->
+                     <h4>Server</h4>
+
+                    <p class="code-info">Within <span style="color:#9d8186;">server.php </span>, you can use <a class="link" href="http://php.net/manual/en/reserved.variables.request.php" target="_blank">$_REQUEST</a> to receive the data from the client and store it into a variable. Afterwards, you will store the value of the characters typed into the input field gathered from the data provided by the ajax call and store that into a separate variable: </p>
+
+                    <pre><code>// receive the data from client<br />$data = $_REQUEST; // store the data retrieved from ajax call<br />$name = $data['star_name']; // collect the input from form input 'star_name'</code> </pre>
+
+                    <p class="code-info">The hard-coded small-scale star database is held within a <a class="link" href="http://php.net/manual/en/language.types.array.php" target="_blank">php array</a> of arrays in the following format: </p>
+
+                      <pre><code>// data array<br />$star_array = array( <br />&#09;array('attribute1' =&gt; 'value1', 'attribute2' =&gt; 'value2', 'attribute3' =&gt; 'value3' ... ), <br />&#09;array('attribute1' =&gt; 'value1', 'attribute2' =&gt; 'value2', 'attribute3' =&gt; 'value3' ... )<br />);</code></pre>
+
+                    <p class="code-info">In this example, the array of arrays is formatted like so: </p>
+
+                      <pre><code>$star_details = array( <br />&#09;array('name' =&gt; 'Proxima Centauri', 'distance' =&gt; '4.243',  'constellation' =&gt; 'Centaurus','evolution' =&gt; 'Red Dwarf'),<br />&#09;array('name' =&gt; 'Alpha Centauri A', 'distance' =&gt; '4.37',   'constellation' =&gt; 'Centaurus', 'evolution' =&gt; 'Main Sequence'),<br />&#09;.... <br />);</code></pre>
+
+                     <p class="code-info">In order to send a response back to the client, we must determine if the user has found any star name matches within our php "database". Since results will be continuously updated, new results should appear or disappear as the user types or deletes characters within the text field. We can iterate through all the star names within the star objects and check that the string of characters are found within it. The more characters a user types, the more specific the results will be and less likely to find a hit. However, if a user only types a few characters, it will display more results from a broader search. We can achieve this search functionality with a simple for-loop: </p>
+
+                    <pre><code>// result array<br />$result = array();<br /><br />for( $count = 0 ; $count &lt; count( $star_details ) ; $count++ ) {<br />&#09;if( stripos( $star_details[$count]['name'] , $name ) !== false ) {<br />&#09;&#09;array_push( $result , $star_details[$count] );<br />&#09;}<br />}</code></pre>
+
+                    <p class="code-info">We can create a new array, $result, that will hold the final results of the search that will be sent back to the client. To store results into that array, we will first create an iterator variable, $count, that will start at value 0 and loop through the size of the $star_details array. For each iteration, $name will be checked to see if it can be found within the ['name'] attribute of the star object, and if so, the star object will be pushed to the $results array. If not, it is skipped. <a class="link" href="http://php.net/manual/en/function.stripos.php" target="_blank">stripos</a> is used to find an occurance of the value of $name within the ['name'].</p>
+
+                    <p class="code-info">And finally, the data is returned to the client in JSON format to be read by the client: </p>
+
+                    <pre><code>// return response as JSON<br />echo json_encode( $result);</code></pre>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- S O U R C E S -->
+    <div id="sources">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+                    <h2 class="heading">Sources</h2>
+                    <hr>
+                    <div class="clearfix"></div>
+                    <p class="subheading">A little help can go a long way.</p>
+                </div>
+                <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12">
+                    <h4>Star information</h4>
+                    <ul>
+                        <li><a class="link" href="http://www.atlasoftheuniverse.com/nearstar.html" target="_blank">The Atlas of the Universe - Nearest Stars</a> <span style="color: #8e8e8e;">- Detailed information about the stars nearest to the Earth created by Richard Powell. </span></li>
+                        <li><a class="link" href="https://www.wikipedia.org/" target="_blank">Wikipedia</a> <span style="color: #8e8e8e;">- Additional star properties, including distance, constellation groups and evolutionary stage.</span></li>
+                    </ul>
+                    <h4>Inspiration</h4>
+                    <ul>
+                        <li><a class="link" href="https://www.udemy.com/learn-ajax-using-javascript-jquery-in-2-hrs-2-projects/learn/v4/overview"  target="_blank">AJAX using Javascript and JQuery</a> <span style="color: #6a6a6a;">Udemy Course by</span> <a class="link" href="https://www.udemy.com/user/umang-shah-4/" target="_blank">Umang Shah</a>  <span style="color: #8e8e8e;">- This app was inspired by a project introducted in Shah's course on Ajax. He teaches the concepts essential to ajax and jquery very well and I highly recommend his course. I plan to build upon this project to include additional features to improve usability.</span></li>
+                    </ul>
+                    <h4>Images</h4>
+                    <ul>
+                        <li><a class="link" href="https://www.pexels.com/" target="_blank">Pexels</a> <span style="color: #8e8e8e;">- Free stock photos available to the public.</span></li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- J Q U E R Y -->
+    <script src="js/jquery.easing.1.3.js"></script>
+    <script src="js/app.js"></script>
+
+    <!-- B O O T S T R A P -->
+    <script src="js/bootstrap.min.js"></script>
+</body>
+
+</html>

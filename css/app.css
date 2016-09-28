@@ -1,0 +1,235 @@
+/*************************
+ * 00. Defaults
+ *************************/
+ body, html {
+    width: 100%;
+    height: 100%;
+}
+
+body, h1, h2, h3, h4 {
+    font-family: 'Dosis', sans-serif;
+    font-weight: 800;
+}
+
+h1 {
+    text-transform: uppercase;
+}
+
+h2 {
+    text-transform: uppercase;
+    text-align: left;
+}
+
+h3 {
+    text-transform: lowercase;
+    font-style: italic;
+}
+
+h4 {
+    text-transform: lowercase;
+    color: #fff;
+    font-size: 25px;
+}
+
+hr {
+    width: 150px;
+    float: left;
+    border-top: 3px solid #e7e7e7;
+}
+
+.heading {
+    text-transform: uppercase;
+    text-align: left;
+    color: #e5e5e5;
+}
+
+.subheading {
+    color: #8e8e8e;
+    font-style: italic;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.link:link {
+    color: #734c53;
+    text-decoration: none;
+}
+
+.link:visited {
+    color: #734c53;
+    text-decoration: none;
+}
+
+.link:hover {
+    color: #734c53;
+    text-decoration: none;
+}
+
+.link:active {
+    color: #734c53;
+    text-decoration: none;
+}
+
+a:link {
+    text-decoration: none;
+}
+
+a:visited {
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+a:active {
+    text-decoration: none;
+}
+
+/*************************
+ * 01. Nav
+ *************************/
+ .navbar-default {
+     background-color: #020106;
+     border-color: #020106;
+ }
+
+ .navbar-default .navbar-nav>li>a:link{
+    color: #e5e5e5;
+    font-size: 16px;
+}
+
+.navbar-default .navbar-nav>li>a:visited{
+   color: #e5e5e5;
+   font-size: 16px;
+}
+
+.navbar-default .navbar-nav>li>a:hover {
+   color: #3c086b;
+   font-size: 16px;
+   background-color: #fff;
+}
+
+.navbar-default .navbar-nav>li>a:active {
+   color: #3c086b;
+   font-size: 16px;
+   background-color: #fff;
+}
+
+.navbar>.container .navbar-brand, .navbar>.container-fluid .navbar-brand a:link{
+    color: #e5e5e5;
+    margin-left: -15px;
+    font-size: 16px;
+}
+
+.navbar>.container .navbar-brand, .navbar>.container-fluid .navbar-brand a:visited{
+    color: #e5e5e5;
+    margin-left: -15px;
+    font-size: 16px;
+}
+
+/*************************
+ * 02. Hero
+ *************************/
+#hero {
+     text-align: center;
+     color: #f8f8f8;
+     background: url(../img/hero.jpeg) no-repeat center center;
+     background-size: cover;
+ }
+
+ #hero-heading {
+     position: relative;
+     padding-top: 20%;
+     padding-bottom: 20%;
+ }
+
+  #hero-heading > h1 {
+     margin: 0;
+     font-size: 5em;
+ }
+
+#hero-hr {
+     width: 380px;
+     border-top: 1px solid #f8f8f8;
+     border-bottom: 1px solid rgba(0,0,0,0.2);
+     float: inherit;
+ }
+
+ .scroller {
+   width: 75px;
+   height: 45px;
+   margin-top: 15px;
+   padding: 0px 16px;
+   border: 2px solid white;
+   font-size: 30px;
+   color: white;
+   background: transparent;
+   -webkit-transition: background 0.3s ease-in-out;
+   -moz-transition: background 0.3s ease-in-out;
+   transition: background 0.3s ease-in-out;
+ }
+
+ .scroller:hover,
+ .scroller:focus {
+   outline: none;
+   color: white;
+   background: rgba(255, 255, 255, 0.1);
+ }
+
+ /*************************
+  * 03. Demo
+  *************************/
+  #demo {
+      min-height: 350px;
+      padding: 50px 0;
+      background-color: #060201;
+      border-top: 1px solid #e7e7e7;
+      border-bottom: 1px solid #e7e7e7;
+  }
+
+  #starItem {
+    border: 1px solid white;
+    width: 200px;
+    float: left;
+}
+
+#suggestion_box {
+    color: #fff;
+    margin-top: 10px;
+}
+
+/*************************
+ * 04. Code
+ *************************/
+ #code {
+     min-height: 350px;
+     padding: 50px 0;
+     background-color: #0E0816;
+     border-top: 1px solid #e7e7e7;
+     border-bottom: 1px solid #e7e7e7;
+ }
+
+ .code-info {
+  font-size: 14px;
+  color: #8e8e8e;
+}
+
+pre {
+  padding: 0px;
+}
+
+code {
+  font-family: Dosis, sans-serif;
+}
+
+/*************************
+ * 05. Sources
+ *************************/
+#sources {
+    min-height: 350px;
+    padding: 50px 0;
+    background-color: #241a2b;
+    border-top: 1px solid #e7e7e7;
+    border-bottom: 1px solid #e7e7e7;
+}
