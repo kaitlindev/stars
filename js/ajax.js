@@ -27,7 +27,7 @@ function filterOne() {
     $.ajax({
         url: "/projects/stars-app/server.php",
         type: "POST",
-        data: "star_distance=" + $('.star_distance').val(),
+        data: "star_distance_one=" + $('.star_distance_one').val(),
         dataType: "json",
         success: function (response, status, http) {
             console.log(response);
@@ -51,7 +51,7 @@ function filterTwo() {
     $.ajax({
         url: "/projects/stars-app/server.php",
         type: "POST",
-        data: "star_distance_one=" + $('.star_distance_one').val(),
+        data: "star_distance_two=" + $('.star_distance_two').val(),
         dataType: "json",
         success: function (response, status, http) {
             console.log(response);
@@ -75,7 +75,7 @@ function filterThree() {
     $.ajax({
         url: "/projects/stars-app/server.php",
         type: "POST",
-        data: "star_distance_two=" + $('.star_distance_two').val(),
+        data: "star_distance_three=" + $('.star_distance_three').val(),
         dataType: "json",
         success: function (response, status, http) {
             console.log(response);

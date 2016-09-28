@@ -7,9 +7,9 @@
 	$name = $data['star_name']; // collect the input from form input 'star_name'
 
     // [2.] Star distance
-	$distance = $_POST['star_distance'];
-	$distance_test = $_POST['star_distance_one'];
-	$distance_testing = $_POST['star_distance_two'];
+	$distance_one = $_POST['star_distance_one'];
+	$distance_two = $_POST['star_distance_two'];
+	$distance_three = $_POST['star_distance_three'];
 
     // [3.] Star constellation
 	$constellation = $_POST['dd'];
@@ -55,7 +55,7 @@ if (($distance  != $distance_far)  && ($distance  != $distance_farther) && ($dis
 	}
 }
 // <5 filter selected...
-if ($distance == $distance_far) {
+if ($distance_one == $distance_far) {
 	for( $count = 0 ; $count < count( $star_details ) ; $count++ ) {
 		if( $star_details[$count]['distance']  <= $distance_far ) {
 			array_push( $result , $star_details[$count] );
@@ -63,15 +63,15 @@ if ($distance == $distance_far) {
 	}
 }
 // 5 - 10 filter selected...
-if ($distance_test == $distance_farther) {
+if ($distance_two == $distance_farther) {
 	for( $count = 0 ; $count < count( $star_details ) ; $count++ ) {
-		if( $star_details[$count]['distance']  <= $distance_farther ) {
+		if( $star_details[$count]['distance']  <= $distance_farther && $star_details[$count]['distance']  >= $distance_far ) {
 			array_push( $result , $star_details[$count] );
 		}
 	}
 }
 // 10+ filter selected...
-if ($distance_testing == $distance_farthest) {
+if ($distance_three == $distance_farthest) {
 	for( $count = 0 ; $count < count( $star_details ) ; $count++ ) {
 		if( $star_details[$count]['distance']  >= $distance_farther ) {
 			array_push( $result , $star_details[$count] );
