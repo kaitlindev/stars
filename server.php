@@ -5,6 +5,8 @@
 	$name = $data['star_name']; // collect the input from form input 'star_name'
 	$distance = $_POST['star_distance'];
 	$distance_test = $_POST['star_distance_one'];
+	$distance_testing = $_POST['star_distance_two'];
+	$constellation = $_POST['dd'];
 
 	// result array
 	$result = array();
@@ -33,6 +35,7 @@
         array('name' => 'Procyon B',        'distance' => '11.46',  'constellation' => 'Canis Minor',       'evolution' => 'White Dwarf')
 	);
 
+// distance filters
 $distance_far = 5;
 $distance_farther = 10;
 $distance_farthest = 15;
@@ -45,7 +48,7 @@ if (($distance  != $distance_far)  && ($distance  != $distance_farther) && ($dis
 		}
 	}
 }
-// distance selected...
+// <5 selected...
 if ($distance == $distance_far) {
 	for( $count = 0 ; $count < count( $star_details ) ; $count++ ) {
 		if( $star_details[$count]['distance']  <= $distance_far ) {
@@ -53,7 +56,7 @@ if ($distance == $distance_far) {
 		}
 	}
 }
-
+// 5 - 10 selected...
 if ($distance_test == $distance_farther) {
 	for( $count = 0 ; $count < count( $star_details ) ; $count++ ) {
 		if( $star_details[$count]['distance']  <= $distance_farther ) {
@@ -61,6 +64,24 @@ if ($distance_test == $distance_farther) {
 		}
 	}
 }
+// 10+ selected...
+if ($distance_testing == $distance_farthest) {
+	for( $count = 0 ; $count < count( $star_details ) ; $count++ ) {
+		if( $star_details[$count]['distance']  >= $distance_farther ) {
+			array_push( $result , $star_details[$count] );
+		}
+	}
+}
+
+// constellation dropdown
+if ($constellation != null) {
+	for( $count = 0 ; $count < count( $star_details ) ; $count++ ) {
+		if( stripos( $star_details[$count]['constellation'] , $constellation ) !== false ) {
+			array_push( $result , $star_details[$count] );
+		}
+	}
+}
+
 
 
 	// Return Response as JSON

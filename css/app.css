@@ -229,6 +229,28 @@ a:active {
   border-color: #6f5e7b;
 }
 
+#wrapper {
+     width: 900px;
+     margin: 0 auto;
+}
+#leftcolumn, #rightcolumn {
+    float: left;
+    min-height: 120px;
+    color: white;
+}
+#leftcolumn {
+     width: 422px;
+}
+
+#rightcolumn {
+     width: 422px;
+}
+
+select {
+  
+}
+
+
 /*************************
  * 04. Code
  *************************/
