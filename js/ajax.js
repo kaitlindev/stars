@@ -7,14 +7,14 @@ function getStarsByName() {
         dataType: "json",
         success: function (response, status, http) {
             console.log(response);
-            var star_results = '';
+            var results = '';
             $.each (response, function(index, item) {
-                star_results = star_results + "<div id='starItem'>Name: " + item.name + "<br/>";
-                star_results = star_results + "Distance: " + item.distance + "<br/>";
-                star_results = star_results + "Constellaton: " + item.constellation + "<br/>";
-                star_results = star_results + "</div>";
+                results = results + "<div id='starItem'>Name: " + item.name + "<br/>";
+                results = results + "Distance: " + item.distance + "<br/>";
+                results = results + "Constellaton: " + item.constellation + "<br/>";
+                results = results + "</div>";
             });
-            $('#suggestion_box').html(star_results);
+            $('#star_results').html(results);
         },
         error: function (http, status, error) {
             alert("Error: " + error);
@@ -31,14 +31,14 @@ function getStarsByDistanceFilterOne() {
         dataType: "json",
         success: function (response, status, http) {
             console.log(response);
-            var star_results = '';
+            var results = '';
             $.each (response, function(index, item) {
-                star_results = star_results + "<div id='starItem'>Name: " + item.name + "<br/>";
-                star_results = star_results + "Distance: " + item.distance + "<br/>";
-                star_results = star_results + "Constellaton: " + item.constellation + "<br/>";
-                star_results = star_results + "</div>";
+                results = results + "<div id='starItem'>Name: " + item.name + "<br/>";
+                results = results + "Distance: " + item.distance + "<br/>";
+                results = results + "Constellaton: " + item.constellation + "<br/>";
+                results = results + "</div>";
             });
-            $('#suggestion_box').html(star_results);
+            $('#star_results').html(results);
         },
         error: function (http, status, error) {
             alert("Error: " + error);
@@ -55,14 +55,14 @@ function getStarsByDistanceFilterTwo() {
         dataType: "json",
         success: function (response, status, http) {
             console.log(response);
-            var star_results = '';
+            var results = '';
             $.each (response, function(index, item) {
-                star_results = star_results + "<div id='starItem'>Name: " + item.name + "<br/>";
-                star_results = star_results + "Distance: " + item.distance + "<br/>";
-                star_results = star_results + "Constellaton: " + item.constellation + "<br/>";
-                star_results = star_results + "</div>";
+                results = results + "<div id='starItem'>Name: " + item.name + "<br/>";
+                results = results + "Distance: " + item.distance + "<br/>";
+                results = results + "Constellaton: " + item.constellation + "<br/>";
+                results = results + "</div>";
             });
-            $('#suggestion_box').html(star_results);
+            $('#star_results').html(results);
         },
         error: function (http, status, error) {
             alert("Error: " + error);
@@ -79,14 +79,14 @@ function getStarsByDistanceFilterThree() {
         dataType: "json",
         success: function (response, status, http) {
             console.log(response);
-            var star_results = '';
+            var results = '';
             $.each (response, function(index, item) {
-                star_results = star_results + "<div id='starItem'>Name: " + item.name + "<br/>";
-                star_results = star_results + "Distance: " + item.distance + "<br/>";
-                star_results = star_results + "Constellaton: " + item.constellation + "<br/>";
-                star_results = star_results + "</div>";
+                results = results + "<div id='starItem'>Name: " + item.name + "<br/>";
+                results = results + "Distance: " + item.distance + "<br/>";
+                results = results + "Constellaton: " + item.constellation + "<br/>";
+                results = results + "</div>";
             });
-            $('#suggestion_box').html(star_results);
+            $('#star_results').html(results);
         },
         error: function (http, status, error) {
             alert("Error: " + error);
@@ -99,18 +99,18 @@ function getStarsByConstellation() {
     $.ajax({
         url: "/projects/stars-app/server.php",
         type: "POST",
-        data: "dd=" + $('.dd').val(),
+        data: "star_constellation=" + $('.star_constellation').val(),
         dataType: "json",
         success: function (response, status, http) {
             console.log(response);
-            var star_results = '';
+            var results = '';
             $.each (response, function(index, item) {
-                star_results = star_results + "<div id='starItem'>Name: " + item.name + "<br/>";
-                star_results = star_results + "Distance: " + item.distance + "<br/>";
-                star_results = star_results + "Constellaton: " + item.constellation + "<br/>";
-                star_results = star_results + "</div>";
+                results = results + "<div id='starItem'>Name: " + item.name + "<br/>";
+                results = results + "Distance: " + item.distance + "<br/>";
+                results = results + "Constellaton: " + item.constellation + "<br/>";
+                results = results + "</div>";
             });
-            $('#suggestion_box').html(star_results);
+            $('#star_results').html(results);
         },
         error: function (http, status, error) {
             alert("Error: " + error);

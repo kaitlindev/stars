@@ -12,7 +12,7 @@
 	$distance_three = $_POST['star_distance_three'];
 
     // [3.] Star constellation
-	$constellation = $_POST['dd'];
+	$constellation = $_POST['star_constellation'];
 
 	// result array
 	$result = array();

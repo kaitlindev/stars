@@ -109,7 +109,7 @@
 
                           <!-- constellation dropdown -->
                           <h4>constellation where star belongs</h4>
-                          <select id="dd" class="dd form-control" onChange="getStarsByConstellation();">
+                          <select id="star_constellation" class="star_constellation form-control" onChange="getStarsByConstellation();">
                             <option value="" name="" class="">-- Select --</option>
                             <option value="Andromeda" name="constellation" class="constellation">Andromeda</option>
                             <option value="Aquarius" name="constellation" class="constellation">Aquarius</option>
@@ -132,7 +132,7 @@
                     <h4>search star name</h4>
                     <input class="form-control" type="text" id="star_name" name="star_name" onkeyup="getStarsByName();"/>
                     <div>
-                        <p id="suggestion_box">See suggestions here.</p>
+                        <p id="star_results">See results here.</p>
                     </div>
                 </div>
             </div>
@@ -151,60 +151,53 @@
                 </div>
                 <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12">
 
-                    <!-- client/server -->
+                    <!-- client/server interaction -->
                     <h4>client/server interaction</h4>
 
-                    <p class="code-info">AJAX is essential for creating dynamic web pages where content can be updated seamlessly without the need for refreshing the whole page itself. When an event occurs, triggered by the user, data is exchanged between the browser and the server. When an http request is sent from the browser to the server, a response is created and the new/updated data is sent back to the browser to show the changed page content. </p>
+                    <p class="code-info">AJAX is essential for creating dynamic web pages where content can be updated seamlessly without the need for refreshing the whole page itself. When an event occurs, triggered by the user, data is exchanged between the browser and the server. When an http request is sent from the browser to the server, a response is created and the updated data is sent back to the browser to show the changed page content. </p>
 
-                     <p class="code-info">In this simple app, the current web page <span style="color:#9d8186;">(client.html) </span>acts as a client and a PHP file <span style="color:#9d8186;">(server.php) </span> is used to simulate a server. Data is exchanged between the client.html file and server.php file when triggered by a keyup event within the input field of the star name search box. Whenever a new character is entered or deleted from the input field, an <a class="link" href="http://api.jquery.com/jquery.ajax/" target="_blank"> ajax call</a> is made with the help of a JQuery script. </p>
+                     <p class="code-info">In this simple app, the current web page <span style="color:#9d8186;">client.html </span>acts as a client and a PHP file <span style="color:#9d8186;">server.php </span> is used to simulate a server. Data is exchanged between the two files when Javascript is triggered by three different HTML DOM events: <a class="link" href="http://www.w3schools.com/jsref/event_onkeyup.asp" target="_blank">onkeyup</a>, <a class="link" href="http://www.w3schools.com/jsref/event_onclick.asp" target="_blank">onclick</a> and  <a class="link" href="http://www.w3schools.com/jsref/event_onchange.asp" target="_blank">onchange</a>.</p>
 
-                    <!-- what it does -->
-                    <h4>What it does</h4>
-                    <p class="code-info">So what does this app actually do? A user will be able to search a small hard-coded array of star "objects", containing attributes such as name, distance (in light years) and the constellation that contains the star. The simulation of star "objects" will be shown in the server file code. As a character is entered or removed within the text field, results will be updated asynchronously. The code in order to do this will be explained more in depth below.</p>
+                    <p class="code-info">There are three different ways to search for stars: searching by name, filtering by distance in light years, and selecting the constellation that the star belongs to. Each method requires making an <a class="link" href="http://api.jquery.com/jquery.ajax/" target="_blank">ajax call</a> with the help of a JQuery script.</p>
 
-                    <h4>Client</h4>
+                    <!-- app overview -->
+                    <h4>app overview</h4>
 
-                    <p class="code-info">For our web page acting as the client, we have a basic input field with an id and function that is triggered <a class="link" href="http://www.w3schools.com/jsref/event_onkeyup.asp" target="_blank">onkeyup:</a></p>
+                    <p class="code-info">A user will be able to search a small hard-coded array of star "objects", containing attributes such as name, distance (in light years) and the constellation that contains the star. The simulation of star "objects" will be shown in the server file code below.</p>
 
-                    <pre><code>&lt;h2&gt;Star name: &lt;/h2&gt;<br />&lt;input class="form-control" type="text" id="star_name" name="star_name" onkeyup="getStarDetails();"/&gt;</code></pre>
+                    <h5>searching by name</h5>
+                    <p class="code-info">As a character is entered or removed within the text field, results will be updated asynchronously. The input collected from the user will be compared against the collection of star names stored as attributes within the star objects. An ajax call is continuously sifting through the star names to find the ones that match the input.</p>
 
-                    <p class="code-info">The results of the search will be appended to a paragraph tag below the input field using <a class="link" href="http://api.jquery.com/html/" target="_blank">.html( )</a>:</p>
+                    <h5>filtering by distance</h5>
+                    <p class="code-info">There are three choices available to filter star distance from Earth: less than 5 light years, between 5 and 10 light years, and >10 light years. When any one of these buttons are clicked, an ajax call is made to find all stars that contain a distance within that range.</p>
 
-                    <pre><code>&lt;p id="suggestion_box"&gt;See suggestions here.&lt;/p&gt;</code></pre>
+                    <h5>selecting the constellation</h5>
+                    <p class="code-info">The user can select a constellation by the drop down list that will find all the stars that can be found in that constellation. </p>
 
-                     <!-- ajax -->
-                     <h4>Ajax</h4>
+                    <!-- how it works -->
+                    <h4>how it works</h4>
 
-                     <p class="code-info">By importing the JQuery library, you can perform an asynchronous http request with $.ajax. The following function is needed to form the connection between client and server:</p>
+                    <button id="search" class="accordion">searching by name</button>
+                      <div class="panel">
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                      </div>
 
-                    <pre><code>function getStarDetails() { <br />&#09;$.ajax({<br />&#09;&#09;url: "/server.php", // receiving URL<br />&#09;&#09;type: "POST", // POST request<br />&#09;&#09;data: "star_name=" + $('#star_name').val(), // data is formed by the value of the id 'star_name'<br />&#09;&#09;dataType: "json", // data will be send/retrieved in JSON format<br />&#09;&#09;success: function (response, status, http) { // if successful... <br />&#09;&#09;&#09;console.log(response);<br />&#09;&#09;&#09; var new_suggestions = ''; // form a string to append to the &lt;p&gt; with id 'suggestion_box' <br />&#09;&#09;&#09;$.each (response, function(index, item) { // for each item, find the name, distance and constellation and add to new_suggestions<br />&#09;&#09;&#09;&#09;new_suggestions = new_suggestions + "&lt;div&gt;Name: " + item.name + "&lt;br/&gt;";<br />&#09;&#09;&#09;&#09;new_suggestions = new_suggestions + "Distance: " + item.distance + "&lt;br/&gt;"; <br />&#09;&#09;&#09;&#09;new_suggestions = new_suggestions + "Constellaton: " + item.constellation + "&lt;br/&gt;";<br />&#09;&#09;&#09;&#09;new_suggestions = new_suggestions + "&lt;/div&gt;";<br />&#09;&#09;&#09;});<br />&#09;&#09;&#09;$('#suggestion_box').html(new_suggestions); // append with new_suggestions to the &lt;p&gt;<br />&#09;&#09;}, <br />&#09;&#09;error: function (http, status, error) { // if there's an error, show user<br />&#09;&#09;&#09;alert("Error: " + error);<br />&#09;&#09;}<br />&#09;});<br />}</code></pre>
+                      <button id="filter" class="accordion">filtering by distance</button>
+                      <div class="panel">
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                      </div>
 
-                    <p class="code-info">In the above function, if the ajax call is successful, the name, distance and constellation attributes of the star "objects" (in JSON format) will be appended to the &lt;p&gt;, which can be seen on <span style="color:#9d8186;">client.html</span> almost instantaneously. You can see where name, distance and constellation come from by viewing the contents of the <span style="color:#9d8186;">server.php </span>below. </p>
+                      <button id="select" class="accordion">selecting the constellation</button>
+                      <div class="panel">
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                      </div>
 
-                     <!-- server -->
-                     <h4>Server</h4>
 
-                    <p class="code-info">Within <span style="color:#9d8186;">server.php </span>, you can use <a class="link" href="http://php.net/manual/en/reserved.variables.request.php" target="_blank">$_REQUEST</a> to receive the data from the client and store it into a variable. Afterwards, you will store the value of the characters typed into the input field gathered from the data provided by the ajax call and store that into a separate variable: </p>
 
-                    <pre><code>// receive the data from client<br />$data = $_REQUEST; // store the data retrieved from ajax call<br />$name = $data['star_name']; // collect the input from form input 'star_name'</code> </pre>
 
-                    <p class="code-info">The hard-coded small-scale star database is held within a <a class="link" href="http://php.net/manual/en/language.types.array.php" target="_blank">php array</a> of arrays in the following format: </p>
 
-                      <pre><code>// data array<br />$star_array = array( <br />&#09;array('attribute1' =&gt; 'value1', 'attribute2' =&gt; 'value2', 'attribute3' =&gt; 'value3' ... ), <br />&#09;array('attribute1' =&gt; 'value1', 'attribute2' =&gt; 'value2', 'attribute3' =&gt; 'value3' ... )<br />);</code></pre>
 
-                    <p class="code-info">In this example, the array of arrays is formatted like so: </p>
 
-                      <pre><code>$star_details = array( <br />&#09;array('name' =&gt; 'Proxima Centauri', 'distance' =&gt; '4.243',  'constellation' =&gt; 'Centaurus','evolution' =&gt; 'Red Dwarf'),<br />&#09;array('name' =&gt; 'Alpha Centauri A', 'distance' =&gt; '4.37',   'constellation' =&gt; 'Centaurus', 'evolution' =&gt; 'Main Sequence'),<br />&#09;.... <br />);</code></pre>
-
-                     <p class="code-info">In order to send a response back to the client, we must determine if the user has found any star name matches within our php "database". Since results will be continuously updated, new results should appear or disappear as the user types or deletes characters within the text field. We can iterate through all the star names within the star objects and check that the string of characters are found within it. The more characters a user types, the more specific the results will be and less likely to find a hit. However, if a user only types a few characters, it will display more results from a broader search. We can achieve this search functionality with a simple for-loop: </p>
-
-                    <pre><code>// result array<br />$result = array();<br /><br />for( $count = 0 ; $count &lt; count( $star_details ) ; $count++ ) {<br />&#09;if( stripos( $star_details[$count]['name'] , $name ) !== false ) {<br />&#09;&#09;array_push( $result , $star_details[$count] );<br />&#09;}<br />}</code></pre>
-
-                    <p class="code-info">We can create a new array, $result, that will hold the final results of the search that will be sent back to the client. To store results into that array, we will first create an iterator variable, $count, that will start at value 0 and loop through the size of the $star_details array. For each iteration, $name will be checked to see if it can be found within the ['name'] attribute of the star object, and if so, the star object will be pushed to the $results array. If not, it is skipped. <a class="link" href="http://php.net/manual/en/function.stripos.php" target="_blank">stripos</a> is used to find an occurance of the value of $name within the ['name'].</p>
-
-                    <p class="code-info">And finally, the data is returned to the client in JSON format to be read by the client: </p>
-
-                    <pre><code>// return response as JSON<br />echo json_encode( $result);</code></pre>
                 </div>
             </div>
         </div>
@@ -239,6 +232,18 @@
             </div>
         </div>
     </div>
+
+    <script>
+      var acc = document.getElementsByClassName("accordion");
+      var i;
+
+      for (i = 0; i < acc.length; i++) {
+          acc[i].onclick = function(){
+              this.classList.toggle("active");
+              this.nextElementSibling.classList.toggle("show");
+        }
+      }
+</script>
 
     <!-- J Q U E R Y -->
     <script src="js/jquery.easing.1.3.js"></script>
