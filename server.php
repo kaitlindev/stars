@@ -1,11 +1,17 @@
 <?php
 
-	// receive the data from client
+	/* Receive data from client - client.html */
 	$data = $_REQUEST; // store the data retrieved from ajax call
+
+    // [1.] Star name
 	$name = $data['star_name']; // collect the input from form input 'star_name'
+
+    // [2.] Star distance
 	$distance = $_POST['star_distance'];
 	$distance_test = $_POST['star_distance_one'];
 	$distance_testing = $_POST['star_distance_two'];
+
+    // [3.] Star constellation
 	$constellation = $_POST['dd'];
 
 	// result array
@@ -40,7 +46,7 @@ $distance_far = 5;
 $distance_farther = 10;
 $distance_farthest = 15;
 
-// no distance selected, search for name
+// If no distance or constellation selected, search for name...
 if (($distance  != $distance_far)  && ($distance  != $distance_farther) && ($distance  != $distance_farthest) ) {
 	for( $count = 0 ; $count < count( $star_details ) ; $count++ ) {
 		if( stripos( $star_details[$count]['name'] , $name ) !== false ) {
@@ -48,7 +54,7 @@ if (($distance  != $distance_far)  && ($distance  != $distance_farther) && ($dis
 		}
 	}
 }
-// <5 selected...
+// <5 filter selected...
 if ($distance == $distance_far) {
 	for( $count = 0 ; $count < count( $star_details ) ; $count++ ) {
 		if( $star_details[$count]['distance']  <= $distance_far ) {
@@ -56,7 +62,7 @@ if ($distance == $distance_far) {
 		}
 	}
 }
-// 5 - 10 selected...
+// 5 - 10 filter selected...
 if ($distance_test == $distance_farther) {
 	for( $count = 0 ; $count < count( $star_details ) ; $count++ ) {
 		if( $star_details[$count]['distance']  <= $distance_farther ) {
@@ -64,7 +70,7 @@ if ($distance_test == $distance_farther) {
 		}
 	}
 }
-// 10+ selected...
+// 10+ filter selected...
 if ($distance_testing == $distance_farthest) {
 	for( $count = 0 ; $count < count( $star_details ) ; $count++ ) {
 		if( $star_details[$count]['distance']  >= $distance_farther ) {
@@ -82,9 +88,7 @@ if ($constellation != null) {
 	}
 }
 
-
-
-	// Return Response as JSON
-	echo json_encode( $result );
+// Return Response as JSON
+echo json_encode( $result );
 
 ?>
