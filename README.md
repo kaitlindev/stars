@@ -11,6 +11,8 @@ Simple app that demonstrates the interaction between client and server built wit
 ### HTML/CSS: ###
 * [Bootstrap](http://getbootstrap.com/) - 3.3.7
 * [Fixed Top Navbar Example for Bootstrap](https://getbootstrap.com/examples/navbar-fixed-top/) - Bootstrap
+* [Font Awesome Icons](http://fontawesome.io/icons/) - Dave Gandy
+
 
 ### JavaScript: ###
 * [JQuery](https://jquery.com/) - 2.2.2
