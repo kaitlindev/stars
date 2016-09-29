@@ -97,16 +97,16 @@
                 </div>
                 <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12">
                     <div id="wrapper">
-                      <div id="leftcolumn">
 
+                      <div id="leftcolumn">
                         <!-- distance filters -->
                         <h4>distance in light years from earth</h4>
                         <button id="distanceFilterOne" class="btn btn-primary star_distance_one" name="star_distance_one" type="button" value="5" onclick="getStarsByDistanceFilterOne();"> < 5 </button>
                         <button id="distanceFilterTwo" class="btn btn-primary star_distance_two" name="star_distance_two" type="button" value="10" onclick="getStarsByDistanceFilterTwo();"> 5 - 10 </button>
                         <button id="distanceFilterThree" class="btn btn-primary star_distance_three" name="star_distance_three" type="button" value="15" onclick="getStarsByDistanceFilterThree();"> 10 + </button>
                       </div>
-                      <div id="rightcolumn">
 
+                      <div id="rightcolumn">
                           <!-- constellation dropdown -->
                           <h4>constellation where star belongs</h4>
                           <select id="star_constellation" class="star_constellation form-control" onChange="getStarsByConstellation();">
@@ -171,25 +171,99 @@
                     <h5>filtering by distance</h5>
                     <p class="code-info">There are three choices available to filter star distance from Earth: less than 5 light years, between 5 and 10 light years, and >10 light years. When any one of these buttons are clicked, an ajax call is made to find all stars that contain a distance within that range.</p>
 
+                    <div id="top"></div>
                     <h5>selecting the constellation</h5>
                     <p class="code-info">The user can select a constellation by the drop down list that will find all the stars that can be found in that constellation. </p>
 
                     <!-- how it works -->
                     <h4>how it works</h4>
 
+                    <!-- search accordion -->
                     <button id="search" class="accordion">searching by name</button>
                       <div class="panel">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-                      </div>
 
-                      <button id="filter" class="accordion">filtering by distance</button>
+                        <!-- client -->
+                        <h5>client</h5>
+                        <p class="code-info">For our web page acting as the client, we have a basic input field with an id and function that is triggered <a class="link" href="http://www.w3schools.com/jsref/event_onkeyup.asp" target="_blank">onkeyup:</a></p>
+
+                        <pre><code>&lt;h4&gt;Search stars by name: &lt;/h4&gt;<br />&lt;input class="form-control" type="text" id="star_name" name="star_name" onkeyup="getStarsByName();"/&gt;</code></pre>
+
+                        <p class="code-info">The results of the search will be appended to a paragraph tag below the input field using <a class="link" href="http://api.jquery.com/html/" target="_blank">.html( )</a>:</p>
+
+                        <pre><code>&lt;p id="star_results"&gt;See results here.&lt;/p&gt;</code></pre>
+
+                        <!-- ajax -->
+                        <h5>Ajax</h5>
+
+                        <p class="code-info">By importing the JQuery library, you can perform an asynchronous http request with <a class="link" href="http://api.jquery.com/jquery.ajax/" target="_blank">$.ajax.</a> The following function is needed to form the connection between client and server:</p>
+
+                        <pre><code>function getStarsByName() { <br />&#09;$.ajax({<br />&#09;&#09;url: "/server.php", // receiving URL<br />&#09;&#09;type: "POST", // POST request<br />&#09;&#09;data: "star_name=" + $('#star_name').val(), // data is formed by the value of the id 'star_name'<br />&#09;&#09;dataType: "json", // data is sent/received in JSON format<br />&#09;&#09;success: function (response, status, http) { // if successful... <br />&#09;&#09;&#09;console.log(response);<br />&#09;&#09;&#09; var results = ''; // form a string to append to the &lt;p&gt; with id 'star_results' <br />&#09;&#09;&#09;$.each (response, function(index, item) { // for each item, find the name, distance and constellation and add to results<br />&#09;&#09;&#09;&#09;results = results + "&lt;div&gt;Name: " + item.name + "&lt;br/&gt;";<br />&#09;&#09;&#09;&#09;results = results + "Distance: " + item.distance + "&lt;br/&gt;"; <br />&#09;&#09;&#09;&#09;results = results + "Constellaton: " + item.constellation + "&lt;br/&gt;";<br />&#09;&#09;&#09;&#09;results = results + "&lt;/div&gt;";<br />&#09;&#09;&#09;});<br />&#09;&#09;&#09;$('#star_results').html(results); // append with results to the &lt;p&gt;<br />&#09;&#09;}, <br />&#09;&#09;error: function (http, status, error) { // if there's an error, show user<br />&#09;&#09;&#09;alert("Error: " + error);<br />&#09;&#09;}<br />&#09;});<br />}</code></pre>
+
+                        <p class="code-info">In the above function, if the ajax call is successful, the name, distance and constellation attributes of the star "objects" (in JSON format) will be appended to the &lt;p&gt;, which can be seen on <span style="color:#9d8186;">client.html</span> almost instantaneously. You can see where name, distance and constellation come from by viewing the contents of the <span style="color:#9d8186;">server.php </span>below. </p>
+
+                        <!-- server -->
+                        <h5>Server</h5>
+                          <p class="code-info">Within <span style="color:#9d8186;">server.php </span>, you can use <a class="link" href="http://php.net/manual/en/reserved.variables.request.php" target="_blank">$_REQUEST</a> to receive the data from the client and store it into a variable. Afterwards, you can store the value of the characters typed into the input field gathered from the data provided by the ajax call and store that into a separate variable: </p>
+
+                          <pre><code>// receive the data from client<br />$data = $_REQUEST; // store the data retrieved from ajax call<br />$name = $data['star_name']; // collect the input from form input 'star_name'</code> </pre>
+
+                          <p class="code-info">The hard-coded small-scale star database is held within a <a class="link" href="http://www.w3schools.com/php/php_arrays_multi.asp" target="_blank">php array of arrays</a> in the following format: </p>
+
+                          <pre><code>// data array<br />$star_array = array( <br />&#09;array('attribute1' =&gt; 'value1', 'attribute2' =&gt; 'value2', 'attribute3' =&gt; 'value3' ... ), <br />&#09;array('attribute1' =&gt; 'value1', 'attribute2' =&gt; 'value2', 'attribute3' =&gt; 'value3' ... )<br />);</code></pre>
+
+                          <p class="code-info">In this example, the array of arrays is formatted like so: </p>
+
+                          <pre><code>$star_data = array( <br />&#09;array('name' =&gt; 'Proxima Centauri', 'distance' =&gt; '4.243',  'constellation' =&gt; 'Centaurus','evolution' =&gt; 'Red Dwarf'),<br />&#09;array('name' =&gt; 'Alpha Centauri A', 'distance' =&gt; '4.37',   'constellation' =&gt; 'Centaurus', 'evolution' =&gt; 'Main Sequence'),<br />&#09;.... <br />);</code></pre>
+
+                         <p class="code-info">In order to send a response back to the client, we must determine if the user has found any star name matches within our php "database". Since results will be continuously updated, new results should appear or disappear as the user types or deletes characters within the text field. We can iterate through all the star names within the star objects and check that the string of characters are found within it. The more characters a user types, the more specific the results will be and less likely to find a hit. However, if a user only types a few characters, it will display more results from a broader search. We can achieve this search functionality with a simple for-loop: </p>
+
+                          <pre><code>// results array<br />$results = array();<br /><br />for( $count = 0 ; $count &lt; count( $star_data ) ; $count++ ) {<br />&#09;if( stripos( $star_data[$count]['name'] , $name ) !== false ) {<br />&#09;&#09;array_push( $results , $star_data[$count] );<br />&#09;}<br />}</code></pre>
+
+                          <p class="code-info">We can create a new array, $results, that will hold the final results of the search that will be sent back to the client. To store results into that array, we will first create an iterator variable, $count, that will start at value 0 and loop through the size of the $star_data array. For each iteration, $name will be checked to see if it can be found within the ['name'] attribute of the star object, and if so, the star object will be pushed to the $results array. If not, it is skipped. <a class="link" href="http://php.net/manual/en/function.stripos.php" target="_blank">stripos</a> is used to find an occurance of the value of $name within the ['name'].</p>
+
+                          <p class="code-info">And finally, the data is returned to the client in JSON format to be read by the client: </p>
+
+                          <pre><code>// return response as JSON<br />echo json_encode( $results);</code></pre>
+
+                          <a id="topButton" class="btn btn-default page-scroll" href="#top" role="button">back to top</a>
+                        </div>
+
+                    <!-- filter accordion -->
+                    <button id="filter" class="accordion">filtering by distance</button>
                       <div class="panel">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+
+                        <!-- client -->
+                        <h5>Client</h5>
+                        <p class="code-info">The user can select a distance filter from three available buttons: </p>
+
+                        <pre><code>&lt;button id=&quot;star_distance_one&quot; class=&quot;btn btn-primary&quot; name=&quot;star_distance_one&quot; type=&quot;button&quot; value=&quot;5&quot; onclick=&quot;getStarsByDistanceFilterOne();&quot;&gt; &lt; 5 &lt;/button&gt; <br/><br/>&lt;button id=&quot;star_distance_two&quot; class=&quot;btn btn-primary&quot; name=&quot;star_distance_two&quot; type=&quot;button&quot; value=&quot;10&quot; onclick=&quot;getStarsByDistanceFilterTwo();&quot;&gt; 5 - 10 &lt;/button&gt; <br/>&lt;button id=&quot;star_distance_three&quot; class=&quot;btn btn-primary&quot; name=&quot;star_distance_three&quot; type=&quot;button&quot; value=&quot;15&quot; onclick=&quot;getStarsByDistanceFilterThree();&quot;&gt; 10 + &lt;/button&gt;</code></pre>
+
+                        <p class="code-info">The results of the search will be appended to a paragraph tag below the input field using <a class="link" href="http://api.jquery.com/html/" target="_blank">.html( )</a>:</p>
+
+                        <pre><code>&lt;p id="star_results"&gt;See results here.&lt;/p&gt;</code></pre>
+
+                        <!-- ajax -->
+                        <h5>Ajax</h5>
+
+                        <!-- server -->
+                        <h5>Server</h5>
+
+                        <a id="topButton" class="btn btn-default page-scroll" href="#top" role="button">back to top</a>
                       </div>
 
                       <button id="select" class="accordion">selecting the constellation</button>
                       <div class="panel">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+
+                        <!-- client -->
+                        <h5>Client</h5>
+
+                        <!-- ajax -->
+                        <h5>Ajax</h5>
+
+                        <!-- server -->
+                        <h5>Server</h5>
+
+                        <a id="topButton" class="btn btn-default page-scroll" href="#top" role="button">back to top</a>
                       </div>
 
 

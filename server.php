@@ -14,11 +14,11 @@
     // [3.] Star constellation
 	$constellation = $_POST['star_constellation'];
 
-	// result array
-	$result = array();
+	// results array
+	$results = array();
 
 	// data array
-	$star_details = array(
+	$star_data = array(
 			array('name' => 'Proxima Centauri', 'distance' => '4.243',  'constellation' => 'Centaurus',         'evolution' => 'Red Dwarf'),
         array('name' => 'Alpha Centauri A', 'distance' => '4.37',   'constellation' => 'Centaurus',         'evolution' => 'Main Sequence'),
         array('name' => 'Alpha Centauri B', 'distance' => '4.37',   'constellation' => 'Centaurus',         'evolution' => 'Main Sequence'),
@@ -48,47 +48,47 @@ $distance_farthest = 15;
 
 // If no distance or constellation selected, search for name...
 if (($distance  != $distance_far)  && ($distance  != $distance_farther) && ($distance  != $distance_farthest) ) {
-	for( $count = 0 ; $count < count( $star_details ) ; $count++ ) {
-		if( stripos( $star_details[$count]['name'] , $name ) !== false ) {
-			array_push( $result , $star_details[$count] );
+	for( $count = 0 ; $count < count( $star_data ) ; $count++ ) {
+		if( stripos( $star_data[$count]['name'] , $name ) !== false ) {
+			array_push( $results , $star_data[$count] );
 		}
 	}
 }
 // <5 filter selected...
 if ($distance_one == $distance_far) {
-	for( $count = 0 ; $count < count( $star_details ) ; $count++ ) {
-		if( $star_details[$count]['distance']  <= $distance_far ) {
-			array_push( $result , $star_details[$count] );
+	for( $count = 0 ; $count < count( $star_data ) ; $count++ ) {
+		if( $star_data[$count]['distance']  <= $distance_far ) {
+			array_push( $results , $star_data[$count] );
 		}
 	}
 }
 // 5 - 10 filter selected...
 if ($distance_two == $distance_farther) {
-	for( $count = 0 ; $count < count( $star_details ) ; $count++ ) {
-		if( $star_details[$count]['distance']  <= $distance_farther && $star_details[$count]['distance']  >= $distance_far ) {
-			array_push( $result , $star_details[$count] );
+	for( $count = 0 ; $count < count( $star_data ) ; $count++ ) {
+		if( $star_data[$count]['distance']  <= $distance_farther && $star_data[$count]['distance']  >= $distance_far ) {
+			array_push( $results , $star_data[$count] );
 		}
 	}
 }
 // 10+ filter selected...
 if ($distance_three == $distance_farthest) {
-	for( $count = 0 ; $count < count( $star_details ) ; $count++ ) {
-		if( $star_details[$count]['distance']  >= $distance_farther ) {
-			array_push( $result , $star_details[$count] );
+	for( $count = 0 ; $count < count( $star_data ) ; $count++ ) {
+		if( $star_data[$count]['distance']  >= $distance_farther ) {
+			array_push( $results , $star_data[$count] );
 		}
 	}
 }
 
 // constellation dropdown
 if ($constellation != null) {
-	for( $count = 0 ; $count < count( $star_details ) ; $count++ ) {
-		if( stripos( $star_details[$count]['constellation'] , $constellation ) !== false ) {
-			array_push( $result , $star_details[$count] );
+	for( $count = 0 ; $count < count( $star_data ) ; $count++ ) {
+		if( stripos( $star_data[$count]['constellation'] , $constellation ) !== false ) {
+			array_push( $results , $star_data[$count] );
 		}
 	}
 }
 
 // Return Response as JSON
-echo json_encode( $result );
+echo json_encode( $results );
 
 ?>

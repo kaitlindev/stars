@@ -259,6 +259,31 @@ a:active {
     width: 100%;
 }
 
+/*************************
+ * 04. Code
+ *************************/
+ #code {
+     min-height: 350px;
+     padding: 50px 0;
+     background-color: #0E0816;
+     border-top: 1px solid #e7e7e7;
+     border-bottom: 1px solid #e7e7e7;
+ }
+
+ .code-info {
+  font-size: 16px;
+  color: #8e8e8e;
+  padding-bottom: 10px;
+}
+
+pre {
+  padding: 0px;
+}
+
+code {
+  font-family: Dosis, sans-serif;
+}
+
 button.accordion {
     background-color: #eee;
     color: #444;
@@ -300,11 +325,21 @@ div.panel {
 
 div.panel.show {
     opacity: 1;
-    max-height: 500px;
+    max-height: 2000px;
+    background-color: #0e0816;
 }
 
 .panel {
   background-color: #060201;
+  margin-bottom: 0px;
+}
+
+#topButton {
+  float: right;
+  background-color:#734c53;
+  border-color:#734c53;
+  color: #fff;
+  margin-bottom: 5px;
 }
 
 #search {
@@ -317,31 +352,6 @@ div.panel.show {
 
 #select {
   background-color: #c4b3b6;
-}
-
-/*************************
- * 04. Code
- *************************/
- #code {
-     min-height: 350px;
-     padding: 50px 0;
-     background-color: #0E0816;
-     border-top: 1px solid #e7e7e7;
-     border-bottom: 1px solid #e7e7e7;
- }
-
- .code-info {
-  font-size: 16px;
-  color: #8e8e8e;
-  padding-bottom: 10px;
-}
-
-pre {
-  padding: 0px;
-}
-
-code {
-  font-family: Dosis, sans-serif;
 }
 
 /*************************
