@@ -257,11 +257,11 @@
 
                         <p class="code-info">The contents of the array 	$star_data remains the same. Also, data is received the same way, but new varaibles must be created: </p>
 
-                        <pre><code>// receive the data from client<br />$data = $_REQUEST; // store the data retrieved from ajax call<br /><br />// // [2.] Star distance<br />$distance_one = $_POST['star_distance_one'];<br />$distance_two = $_POST['star_distance_two'];<br />$distance_three = $_POST['star_distance_three'];</code> </pre>
+                        <pre><code>// receive the data from client<br />$data = $_REQUEST; // store the data retrieved from ajax call<br /><br />// [2.] Star distance<br />$distance_one = $_POST['star_distance_one'];<br />$distance_two = $_POST['star_distance_two'];<br />$distance_three = $_POST['star_distance_three'];</code> </pre>
 
                         <p class="code-info">Three for loops are used to compare each distance attribute of the star object within the array to designated filter values:  </p>
 
-                        <pre><code>// distance filters <br />$distance_far = 5; <br />$distance_farther = 10;<br /> $distance_farthest = 15;<br/><br/>// &lt;5 filter selected... <br/>if ($distance_one == $distance_far) { <br/>&#09;for( $count = 0 ; $count &lt; count( $star_data ) ; $count++ ) { <br/>&#09;&#09;if( $star_data[$count]['distance'] &lt;= $distance_far ) { <br/>&#09;&#09;&#09;array_push( $results , $star_data[$count] ); <br/>&#09;&#09;} <br/>&#09;}<br/> } <br/><br/>// 5 - 10 filter selected... <br/>if ($distance_two == $distance_farther) { <br/>&#09;for( $count = 0 ; $count &lt; count( $star_data ) ; $count++ ) { <br/>&#09;&#09;if( $star_data[$count]['distance'] &lt;= $distance_farther &amp;&amp; $star_data[$count]['distance'] &gt;= $distance_far ) { <br/>&#09;&#09;&#09;array_push( $results , $star_data[$count] ); <br/>&#09;&#09;} <br/>&#09;} <br/>} <br/><br/>// 10+ filter selected... <br/>if ($distance_three == $distance_farthest) { <br/>&#09;for( $count = 0 ; $count &lt; count( $star_data ) ; $count++ ) { <br/>&#09;&#09;if( $star_data[$count]['distance'] &gt;= $distance_farther ) { <br/>&#09;&#09;&#09;array_push( $results , $star_data[$count] ); <br/>&#09;&#09;} <br/>&#09;} <br/>}</code> </pre>
+                        <pre><code>// results array<br />$results = array();<br /><br />// distance filters <br />$distance_far = 5; <br />$distance_farther = 10;<br /> $distance_farthest = 15;<br/><br/>// &lt;5 filter selected... <br/>if ($distance_one == $distance_far) { <br/>&#09;for( $count = 0 ; $count &lt; count( $star_data ) ; $count++ ) { <br/>&#09;&#09;if( $star_data[$count]['distance'] &lt;= $distance_far ) { <br/>&#09;&#09;&#09;array_push( $results , $star_data[$count] ); <br/>&#09;&#09;} <br/>&#09;}<br/> } <br/><br/>// 5 - 10 filter selected... <br/>if ($distance_two == $distance_farther) { <br/>&#09;for( $count = 0 ; $count &lt; count( $star_data ) ; $count++ ) { <br/>&#09;&#09;if( $star_data[$count]['distance'] &lt;= $distance_farther &amp;&amp; $star_data[$count]['distance'] &gt;= $distance_far ) { <br/>&#09;&#09;&#09;array_push( $results , $star_data[$count] ); <br/>&#09;&#09;} <br/>&#09;} <br/>} <br/><br/>// 10+ filter selected... <br/>if ($distance_three == $distance_farthest) { <br/>&#09;for( $count = 0 ; $count &lt; count( $star_data ) ; $count++ ) { <br/>&#09;&#09;if( $star_data[$count]['distance'] &gt;= $distance_farther ) { <br/>&#09;&#09;&#09;array_push( $results , $star_data[$count] ); <br/>&#09;&#09;} <br/>&#09;} <br/>}</code> </pre>
 
                         <p class="code-info">The results are stored into $results and encoded in JSON before being appended to the id star_results:</p>
 
@@ -287,17 +287,27 @@
                         <!-- ajax -->
                         <h5>Ajax</h5>
 
+                        <p class="code-info">Function getStarsByConstellation() collects the value (constellation name) of the option that is selected from the dropdown list. When the user selects his/her first option or selects a new option, the onchange Javascript event is triggered.</p>
+
+                        <pre><code>function getStarsByConstellation() { <br />&#09;$.ajax({<br />&#09;&#09;url: "/server.php", // receiving URL<br />&#09;&#09;type: "POST", // POST request<br />&#09;&#09;data: "star_constellation=" + $('#star_constellation').val(), // data is formed by the value of the id 'star_name'<br />&#09;&#09;dataType: "json", // data is sent/received in JSON format<br />&#09;&#09;success: function (response, status, http) { // if successful... <br />&#09;&#09;&#09;console.log(response);<br />&#09;&#09;&#09; var results = ''; // form a string to append to the &lt;p&gt; with id 'star_results' <br />&#09;&#09;&#09;$.each (response, function(index, item) { // for each item, find the name, distance and constellation and add to results<br />&#09;&#09;&#09;&#09;results = results + "&lt;div&gt;Name: " + item.name + "&lt;br/&gt;";<br />&#09;&#09;&#09;&#09;results = results + "Distance: " + item.distance + "&lt;br/&gt;"; <br />&#09;&#09;&#09;&#09;results = results + "Constellaton: " + item.constellation + "&lt;br/&gt;";<br />&#09;&#09;&#09;&#09;results = results + "&lt;/div&gt;";<br />&#09;&#09;&#09;});<br />&#09;&#09;&#09;$('#star_results').html(results); // append with results to the &lt;p&gt;<br />&#09;&#09;}, <br />&#09;&#09;error: function (http, status, error) { // if there's an error, show user<br />&#09;&#09;&#09;alert("Error: " + error);<br />&#09;&#09;}<br />&#09;});<br />}</code></pre>
+
                         <!-- server -->
                         <h5>Server</h5>
 
+                        <p class="code-info">The contents of the array $star_data remains the same. Also, data is received the same way, but a new varaible must be created to store the selected option within <span style="color:#9d8186;">server.php </span>server.php</span>: </p>
+
+                        <pre><code>// receive the data from client<br />$data = $_REQUEST; // store the data retrieved from ajax call<br /><br />// [3.] Star constellation<br />$constellation = $_POST['star_constellation'];</code> </pre>
+
+                        <p class="code-info">Results are stored in the $results array after the $constellation value is matched to each star object's constellation attrbute ['constellation']. First, we need to check that $constellation is not null, and if it's not, we use a for loop to find matches: </p>
+
+                        <pre><code>if ($constellation != null) { <br />&#09;for( $count = 0 ; $count &lt; count( $star_data ) ; $count++ ) { <br />&#09;&#09;if( stripos( $star_data[$count]['constellation'] , $constellation ) !== false ) { <br />&#09;&#09;&#09;array_push( $results , $star_data[$count] ); <br />&#09;&#09;} <br />&#09;} <br />}</code> </pre>
+
+                        <p class="code-info">Finally, the matched results are JSON encoded and returned to the client: </p>
+
+                        <pre><code>// return response as JSON<br />echo json_encode( $results);</code></pre>
+
                         <a id="topButton" class="btn btn-default page-scroll" href="#top" role="button">back to top</a>
                       </div>
-
-
-
-
-
-
 
                 </div>
             </div>

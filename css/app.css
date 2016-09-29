@@ -325,7 +325,7 @@ div.panel {
 
 div.panel.show {
     opacity: 1;
-    max-height: 2000px;
+    max-height: 2200px;
     background-color: #0e0816;
 }
 
