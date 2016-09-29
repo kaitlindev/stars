@@ -15,8 +15,9 @@ Simple app that demonstrates the interaction between client and server built wit
 * [Glyphicons](http://glyphicons.com/) - Jan Kovarik
 
 
-### JavaScript: ###
+### JavaScript/JQuery: ###
 * [JQuery](https://jquery.com/) - 2.2.2
+* [JQuery Easing Plugin](http://gsgd.co.uk/sandbox/jquery/easing/) - v1.3 
 * [Collapsible Accordion](http://www.w3schools.com/howto/howto_js_accordion.asp) - w3schools.com
 * [Smooth Vertical or Horizontal Page Scrolling with jQuery](http://tympanus.net/codrops/2010/06/02/smooth-vertical-or-horizontal-page-scrolling-with-jquery/) - Codrops
 
