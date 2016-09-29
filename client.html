@@ -246,7 +246,7 @@
                         <!-- ajax -->
                         <h5>Ajax</h5>
 
-                        <p class="code-info">The ajax function is the filtering is identical to the search function, except for the source of the data that is to be sent to the server. The data to be sent is the value that is stored within each button. Once again, JQuery is needed to make the $.ajax call: </p>
+                        <p class="code-info">The ajax functions for the distance filtering is identical to the search function, except for the sources of the data that is to be sent to the server. The data to be sent is the value that is stored within each button: 5, 10 and 15. Each function is triggered by an <a class="link" href="http://www.w3schools.com/jsref/event_onclick.asp" target="_blank">onclick</a> event. Once again, JQuery is needed to make the $.ajax call: </p>
 
                         <pre><code>function getStarsByDistanceFilterOne() { <br />&#09;$.ajax({<br />&#09;&#09;url: "/server.php", // receiving URL<br />&#09;&#09;type: "POST", // POST request<br />&#09;&#09;data: "star_distance_one=" + $('#star_distance_one').val(), // data is formed by the value of the id 'star_name'<br />&#09;&#09;dataType: "json", // data is sent/received in JSON format<br />&#09;&#09;success: function (response, status, http) { // if successful... <br />&#09;&#09;&#09;console.log(response);<br />&#09;&#09;&#09; var results = ''; // form a string to append to the &lt;p&gt; with id 'star_results' <br />&#09;&#09;&#09;$.each (response, function(index, item) { // for each item, find the name, distance and constellation and add to results<br />&#09;&#09;&#09;&#09;results = results + "&lt;div&gt;Name: " + item.name + "&lt;br/&gt;";<br />&#09;&#09;&#09;&#09;results = results + "Distance: " + item.distance + "&lt;br/&gt;"; <br />&#09;&#09;&#09;&#09;results = results + "Constellaton: " + item.constellation + "&lt;br/&gt;";<br />&#09;&#09;&#09;&#09;results = results + "&lt;/div&gt;";<br />&#09;&#09;&#09;});<br />&#09;&#09;&#09;$('#star_results').html(results); // append with results to the &lt;p&gt;<br />&#09;&#09;}, <br />&#09;&#09;error: function (http, status, error) { // if there's an error, show user<br />&#09;&#09;&#09;alert("Error: " + error);<br />&#09;&#09;}<br />&#09;});<br />}</code></pre>
 
@@ -270,11 +270,19 @@
                         <a id="topButton" class="btn btn-default page-scroll" href="#top" role="button">back to top</a>
                       </div>
 
+                      <!-- select accordion -->
                       <button id="select" class="accordion">selecting the constellation</button>
                       <div class="panel">
 
                         <!-- client -->
                         <h5>Client</h5>
+                        <p class="code-info">Available constellations are selected by a dropdown and once an option is selected, a function is triggered by an <a class="link" href="http://www.w3schools.com/jsref/event_onchange.asp" target="_blank">onchange</a> event on the select tag:</p>
+
+                        <pre><code>&lt;h4&gt;constellation where star belongs&lt;/h4&gt; <br/>&lt;select id=&quot;star_constellation&quot; class=&quot;star_constellation form-control&quot; onChange=&quot;getStarsByConstellation();&quot;&gt; <br/>&#09;&lt;option value=&quot;&quot; name=&quot;&quot; class=&quot;&quot;&gt;-- Select --&lt;/option&gt;<br/>&#09; &lt;option value=&quot;Andromeda&quot; name=&quot;constellation&quot; class=&quot;constellation&quot;&gt;Andromeda&lt;/option&gt;<br/>&#09; &lt;option value=&quot;Aquarius&quot; name=&quot;constellation&quot; class=&quot;constellation&quot;&gt;Aquarius&lt;/option&gt;<br/>&#09; &lt;option value=&quot;Canis Major&quot; name=&quot;constellation&quot; class=&quot;constellation&quot;&gt;Canis Major&lt;/option&gt;<br/> &#09;&lt;option value=&quot;Canis Minor&quot; name=&quot;constellation&quot; class=&quot;constellation&quot;&gt;Canis Minor&lt;/option&gt;<br/>&#09; &lt;option value=&quot;Centaurus&quot; name=&quot;constellation&quot; class=&quot;constellation&quot;&gt;Centaurus&lt;/option&gt;<br/>&#09; &lt;option value=&quot;Cetus&quot; name=&quot;constellation&quot; class=&quot;constellation&quot;&gt;Cetus&lt;/option&gt;<br/>&#09; &lt;option value=&quot;Eridanus&quot; name=&quot;constellation&quot; class=&quot;constellation&quot;&gt;Eridanus&lt;/option&gt;<br/>&#09; &lt;option value=&quot;Leo&quot; name=&quot;constellation&quot; class=&quot;constellation&quot;&gt;Leo&lt;/option&gt; <br/>&#09;&lt;option value=&quot;Ophiuchus&quot; name=&quot;constellation&quot; class=&quot;constellation&quot;&gt;Ophiuchus&lt;/option&gt;<br/>&#09; &lt;option value=&quot;Piscis Austrinus&quot; name=&quot;constellation&quot; class=&quot;constellation&quot;&gt;Piscis Austrinus&lt;/option&gt; <br/>&#09;&lt;option value=&quot;Sagittarius&quot; name=&quot;constellation&quot; class=&quot;constellation&quot;&gt;Sagittarius&lt;/option&gt;<br/>&#09;&lt;option value=&quot;Ursa Major&quot; name=&quot;constellation&quot; class=&quot;constellation&quot;&gt;Ursa Major&lt;/option&gt;<br/>&#09;&lt;option value=&quot;Virgo&quot; name=&quot;constellation&quot; class=&quot;constellation&quot;&gt;Virgo&lt;/option&gt;<br/> &lt;/select&gt;</code></pre>
+
+                        <p class="code-info">The results of the search will be appended to a paragraph tag below the input field using <a class="link" href="http://api.jquery.com/html/" target="_blank">.html( )</a>:</p>
+
+                        <pre><code>&lt;p id="star_results"&gt;See results here.&lt;/p&gt;</code></pre>
 
                         <!-- ajax -->
                         <h5>Ajax</h5>
