@@ -2,7 +2,7 @@
 
 Simple app that demonstrates the interaction between client and server built with Ajax, PHP and JQuery.
 
-* Last modified: September 29th, 2016.
+* Last modified: October 3, 2016.
 * URL: http://kiddography.com/projects/stars-app/client.html
 
 
@@ -26,5 +26,4 @@ Simple app that demonstrates the interaction between client and server built wit
 
 ## **PENDING** ##
 
-* Media queries for better user experience.
 * Store code in sql.
