@@ -125,7 +125,7 @@ a:active {
 /*************************
  * 01. Nav
  *************************/
- /* Source: https://getbootstrap.com/examples/navbar-fixed-top/ */ 
+ /* Source: https://getbootstrap.com/examples/navbar-fixed-top/ */
  .navbar-default {
      background-color: #020106;
      border-color: #020106;
@@ -276,11 +276,11 @@ a:active {
     color: white;
 }
 #leftcolumn {
-     width: 422px;
+     width: 50%;
 }
 
 #rightcolumn {
-     width: 422px;
+     width: 50%;
 }
 
 #star_constellation {
