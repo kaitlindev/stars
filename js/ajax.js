@@ -35,7 +35,7 @@ function getStarsByName() {
             console.log(response);
             var results = '';
             $.each (response, function(index, item) {
-                results = results + "<div id='starItem'>Name: " + item.name + "<br/>";
+                results = results + "<div class='starItem'>Name: " + item.name + "<br/>";
                 results = results + "Distance: " + item.distance + "<br/>";
                 results = results + "Constellaton: " + item.constellation + "<br/>";
                 results = results + "</div>";
@@ -59,7 +59,7 @@ function getStarsByDistanceFilterOne() {
             console.log(response);
             var results = '';
             $.each (response, function(index, item) {
-                results = results + "<div id='starItem'>Name: " + item.name + "<br/>";
+                results = results + "<div class='starItem'>Name: " + item.name + "<br/>";
                 results = results + "Distance: " + item.distance + "<br/>";
                 results = results + "Constellaton: " + item.constellation + "<br/>";
                 results = results + "</div>";
@@ -83,7 +83,7 @@ function getStarsByDistanceFilterTwo() {
             console.log(response);
             var results = '';
             $.each (response, function(index, item) {
-                results = results + "<div id='starItem'>Name: " + item.name + "<br/>";
+                results = results + "<div class='starItem'>Name: " + item.name + "<br/>";
                 results = results + "Distance: " + item.distance + "<br/>";
                 results = results + "Constellaton: " + item.constellation + "<br/>";
                 results = results + "</div>";
@@ -107,7 +107,7 @@ function getStarsByDistanceFilterThree() {
             console.log(response);
             var results = '';
             $.each (response, function(index, item) {
-                results = results + "<div id='starItem'>Name: " + item.name + "<br/>";
+                results = results + "<div class='starItem'>Name: " + item.name + "<br/>";
                 results = results + "Distance: " + item.distance + "<br/>";
                 results = results + "Constellaton: " + item.constellation + "<br/>";
                 results = results + "</div>";
@@ -131,7 +131,7 @@ function getStarsByConstellation() {
             console.log(response);
             var results = '';
             $.each (response, function(index, item) {
-                results = results + "<div id='starItem'>Name: " + item.name + "<br/>";
+                results = results + "<div class='starItem'>Name: " + item.name + "<br/>";
                 results = results + "Distance: " + item.distance + "<br/>";
                 results = results + "Constellaton: " + item.constellation + "<br/>";
                 results = results + "</div>";

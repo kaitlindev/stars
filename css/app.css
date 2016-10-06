@@ -225,7 +225,7 @@ a:active {
       border-bottom: 1px solid #e7e7e7;
   }
 
-  #starItem {
+  .starItem {
     background: #c5d1d9;
     background-image: -webkit-linear-gradient(top, #c5d1d9, #7b7f82);
     background-image: -moz-linear-gradient(top, #c5d1d9, #7b7f82);
