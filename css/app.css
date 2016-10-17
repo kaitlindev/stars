@@ -9,7 +9,7 @@
  * Notes:
  * --- W3C CSS Validation: http://jigsaw.w3.org/css-validator/#validate_by_uri
  * --- Accordion styles: http://www.w3schools.com/howto/howto_js_accordion.asp
- * --- Fixed Top Navbar Example for Bootstrap - https://getbootstrap.com/examples/navbar-fixed-top/
+ * --- Fixed Top Navbar for Bootstrap - https://getbootstrap.com/examples/navbar-fixed-top/
  * --------------------------------------------------------------------------------------------------
  * Revision History
  * --------------------------------------------------------------------------------------------------
@@ -18,7 +18,7 @@
  * 09.29.2016 - Created Original Document                                          KAK
  * ==================================================================================================
  *
- * - Contents -
+ * -- Contents --
  * 00. Defaults
  * 01. Nav
  * 02. Hero
@@ -125,44 +125,33 @@ a:active {
 /*************************
  * 01. Nav
  *************************/
- /* Source: https://getbootstrap.com/examples/navbar-fixed-top/ */
  .navbar-default {
      background-color: #020106;
      border-color: #020106;
  }
 
- .navbar-default .navbar-nav>li>a:link{
-    color: #e5e5e5;
-    font-size: 16px;
+ .navbar-default .navbar-brand{
+  color: #ffffff;
+  font-size: 1.2em;
 }
 
-.navbar-default .navbar-nav>li>a:visited{
-   color: #e5e5e5;
-   font-size: 16px;
+.navbar-default .navbar-brand:hover {
+    color: #ffffff;
+    font-size: 1.2em;
+}
+
+.navbar-default .navbar-brand {
+ color: #ffffff;
+ font-size: 1.2em;
+}
+
+.navbar-default .navbar-nav>li>a {
+    color: #ffffff;
 }
 
 .navbar-default .navbar-nav>li>a:hover {
-   color: #3c086b;
-   font-size: 16px;
-   background-color: #fff;
-}
-
-.navbar-default .navbar-nav>li>a:active {
-   color: #3c086b;
-   font-size: 16px;
-   background-color: #fff;
-}
-
-.navbar>.container .navbar-brand, .navbar>.container-fluid .navbar-brand a:link{
-    color: #e5e5e5;
-    margin-left: -15px;
-    font-size: 16px;
-}
-
-.navbar>.container .navbar-brand, .navbar>.container-fluid .navbar-brand a:visited{
-    color: #e5e5e5;
-    margin-left: -15px;
-    font-size: 16px;
+    background-color:#e7e7e7;
+    color: #4c375b;
 }
 
 /*************************
