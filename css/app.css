@@ -3,7 +3,7 @@
  * APP.CSS
  * ==================================================================================================
  * Author: Kaitlin Kidd
- * Date: 09.29.16
+ * Date: 10.18.16
  * Version: 0.0.1
  * Purpose: Main styles for app.
  * Notes:
@@ -15,7 +15,8 @@
  * --------------------------------------------------------------------------------------------------
  * Date          Revision Description                                                     Modified By
  * --------------------------------------------------------------------------------------------------
- * 09.29.2016 - Created Original Document                                          KAK
+ * 09.29.2016 - Created Original Document                                            KAK
+* 10.18.2016 - Fixed bug where browser wasn't full length on mobile    KAK
  * ==================================================================================================
  *
  * -- Contents --
@@ -33,10 +34,8 @@
  *************************/
  html,body {
      width: 100%;
-     height: 100%;
      margin: 0px;
      padding: 0px;
-     overflow-x: hidden;
  }
 
 body, h1, h2, h3, h4, h5 {
@@ -259,19 +258,19 @@ a:active {
 }
 
 #wrapper {
-     width: 900px;
+     width: 100%;
      margin: 0 auto;
 }
-#leftcolumn, #rightcolumn {
+#leftColumn, #rightColumn {
     float: left;
     min-height: 120px;
     color: white;
 }
-#leftcolumn {
+#leftColumn {
      width: 50%;
 }
 
-#rightcolumn {
+#rightColumn {
      width: 50%;
 }
 

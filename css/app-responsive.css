@@ -3,20 +3,20 @@
  * APP-RESPONSIVE.CSS
  * ==================================================================================================
  * Author: Kaitlin Kidd
- * Date: 09.29.16
+ * Date: 10.18.16
  * Version: 0.0.1
  * Purpose: Responsive styles for website.
  * Notes:
  * --- W3C CSS Validation: http://jigsaw.w3.org/css-validator/#validate_by_uri
  * --- Bootstrap Media Queries: http://getbootstrap.com/css/#grid-media-queries
  * --- Device Media Queries: http://resizr.co/
- *
  * --------------------------------------------------------------------------------------------------
  * Revision History
  * --------------------------------------------------------------------------------------------------
  * Date          Revision Description                                                     Modified By
  * --------------------------------------------------------------------------------------------------
- * 09.29.2016 - Created Original Document                                                         KAK
+ * 09.29.2016 - Created Original Document                                             KAK
+ * 10.18.2016 - Fixed bug where browser wasn't full length on mobile    KAK
  * ==================================================================================================
  *
  * -- Contents --
@@ -43,7 +43,7 @@
    * 00. Defaults
    *************************/
    h3 {
-     font-size: 1em;
+     font-size: 1.2em;
    }
 
    h4 {
@@ -51,7 +51,7 @@
    }
 
    h5 {
-     font-size: 0.8em;
+     font-size: 0.9em;
    }
 
    /*************************
@@ -62,7 +62,8 @@
    /*************************
    * 02. Hero
    *************************/
-#hero-heading > h1 {
+
+  #hero-heading > h1 {
   margin: 0;
   font-size: 2.5em;
   padding-top: 30px;
@@ -95,11 +96,11 @@
 }
 
 #star_constellation {
-  width: 31%;
+  width: 90%;
 }
 
-.form-control {
-  width: 84%;
+#star_name {
+  width: 90%;
 }
 
    /*************************
@@ -148,11 +149,11 @@
 }
 
 #star_constellation {
-  width: 46%;
+  width: 75%;
 }
 
-.form-control {
-  width: 84%;
+#star_name {
+  width: 75%;
 }
 
    /*************************
@@ -196,12 +197,13 @@
    * 03. Demo
    *************************/
    #star_constellation {
-     width: 68%;
+     width: 75%;
    }
 
-   .form-control {
-     width: 86%;
+   #star_name {
+     width: 75%;
    }
+
    /*************************
    * 04. Code
    *************************/
@@ -256,11 +258,11 @@
    * 03. Demo
    *************************/
    #star_constellation {
-     width: 69%;
+     width: 85%;
    }
 
-   .form-control {
-     width: 89%;
+   #star_name {
+     width: 85%;
    }
    /*************************
    * 04. Code
@@ -295,11 +297,11 @@
    * 03. Demo
    *************************/
    #star_constellation {
-     width: 84%;
+     width: 100%;
    }
 
-      .form-control {
-     width: 98%;
+   #star_name {
+     width: 100%;
    }
 
     #leftcolumn {
