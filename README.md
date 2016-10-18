@@ -13,7 +13,7 @@ Simple app that demonstrates the interaction between client and server built wit
 * [Fixed Top Navbar Example for Bootstrap](https://getbootstrap.com/examples/navbar-fixed-top/) - Bootstrap 
 * [Font Awesome Icons](http://fontawesome.io/icons/) - © Dave Gandy
 * [Glyphicons](http://glyphicons.com/) - © Jan Kovarik
-* [Default Sizes for Twitter Bootstrap’s Media Queries](https://scotch.io/tutorials/default-sizes-for-twitter-bootstraps-media-queries) - © Nicholas Cerminara, Mar 04, 2014 (Scotch.io).
+* [Default Sizes for Twitter Bootstrap’s Media Queries](https://scotch.io/tutorials/default-sizes-for-twitter-bootstraps-media-queries) - © Mar 04, 2014, Nicholas Cerminara (Scotch.io).
 * [Device Media Queries](http://resizr.co/) - © Piers Rueb
 
 
@@ -27,5 +27,3 @@ Simple app that demonstrates the interaction between client and server built wit
 * [AJAX using JavaScript and JQuery](https://www.udemy.com/learn-ajax-using-javascript-jquery-in-2-hrs-2-projects/learn/v4/t/lecture/4952588?start=105) - © Umang Shah
 
 ## **PENDING** ##
-
-* Store code in sql.
