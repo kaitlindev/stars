@@ -56,7 +56,7 @@
             <li><a href="#demo" class="page-scroll">Demo</a></li>
             <li><a href="#code" class="page-scroll">Code</a></li>
             <li><a href="#sources" class="page-scroll">Sources</a></li>
-            <li><a href="http://kiddography.com/" target="_blank" >Contact</a></li>
+            <li><a href="#contact" class="page-scroll">Contact</a></li>
           </ul>
         </div>
       </div>
@@ -333,7 +333,7 @@
                         <li><a class="link" href="http://www.w3schools.com/howto/howto_js_accordion.asp" target="_blank">Accordion</a> <span style="color: #8e8e8e;">- Collapsible accordion featured on w3schools.com, © w3schools.com</span></li>
                         <li><a class="link" href="http://jigsaw.w3.org/css-validator/#validate_by_uri" target="_blank">W3C CSS Validation</a> <span style="color: #8e8e8e;">- W3C CSS Validation Service, © 1994-2009 W3C® (MIT, ERCIM, KEIO)</span></li>
                         <li><a class="link" href="https://getbootstrap.com/examples/navbar-fixed-top/" target="_blank">Fixed Top Navbar for Bootstrap</a> <span style="color: #8e8e8e;">- Code for navbar - ©Friday, August 19, 2011, GetBootstrap. </span></li>
-                        <li><a class="link" href="https://scotch.io/tutorials/default-sizes-for-twitter-bootstraps-media-queries" target="_blank">Default Sizes for Twitter Bootstrap’s Media Queries</a> <span style="color: #8e8e8e;">- Information about media queries designed for Bootstrap - © Nicholas Cerminara, Mar 04, 2014 (Scotch.io).</span></li>
+                        <li><a class="link" href="https://scotch.io/tutorials/default-sizes-for-twitter-bootstraps-media-queries" target="_blank">Default Sizes for Twitter Bootstrap’s Media Queries</a> <span style="color: #8e8e8e;">- Information about media queries designed for Bootstrap - © Mar 04, 2014, Nicholas Cerminara, (Scotch.io).</span></li>
                         <li><a class="link" href="http://resizr.co/" target="_blank">Device Media Queries by Resizr</a> <span style="color: #8e8e8e;">- Information about media queries designed for mobile devices - © Piers Rueb. </span></li>
                         <li><a class="link" href="http://tympanus.net/codrops/2010/06/02/smooth-vertical-or-horizontal-page-scrolling-with-jquery/" target="_blank">Smooth Vertical or Horizontal Page Scrolling with jQuery</a> <span style="color: #8e8e8e;">- Smooth scrolling used in hero and navbar links. - © 06.02.2010, Mary Lou (Codrops). </span></li>
                     </ul>
@@ -347,19 +347,38 @@
         </div>
     </div>
 
-    <!-- A C C O R D I A N -->
-    <script>
-        var acc = document.getElementsByClassName("accordion");
-        var i;
-        for (i = 0; i < acc.length; i++) {
-            acc[i].onclick = function(){
-                this.classList.toggle("active");
-                this.nextElementSibling.classList.toggle("show");
-          }
-        }
-      </script>
+    <!-- F O O T E R  -->
+    <footer id="contact">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                    <p class="copyright">&copy; 2016 Kaitlin Kidd</p>
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 social">
+                    <a href="https://www.facebook.com/kaitlinannekidd" target="_blank">
+                        <i class="fa fa-facebook-square fa-2x social-icons"></i>
+                    </a>
+                    <a href="https://www.instagram.com/kiddography/?hl=en" target="_blank">
+                        <i class="fa fa-instagram fa-2x social-icons"></i>
+                    </a>
+                    <a href="https://www.linkedin.com/in/kaitlinannekidd" target="_blank">
+                        <i class="fa fa-linkedin fa-2x social-icons"></i>
+                    </a>
+                    <a href="https://github.com/kkiddography" target="_blank">
+                        <i class="fa fa-github fa-2x social-icons"></i>
+                    </a>
+                    <a href="https://bitbucket.org/kkannekidd/" target="_blank">
+                        <i class="fa fa-bitbucket fa-2x social-icons"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
 
-	     <!-- B O O T S T R A P      J S -->
+    <!-- A C C O R D I A N  -->
+    <script src="js/accordion.js"></script>
+
+	  <!-- B O O T S T R A P      J S -->
 		<script src="js/bootstrap.min.js"></script>
 	</body>
 </html>

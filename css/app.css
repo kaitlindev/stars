@@ -26,6 +26,7 @@
  * 03. Demo
  * 04. Code
  * 05. Sources
+ * 06. Footer
  *
  */
 
@@ -386,4 +387,38 @@ div.panel.show {
     background-color: #241a2b;
     border-top: 1px solid #e7e7e7;
     border-bottom: 1px solid #e7e7e7;
+}
+
+/*************************
+ * 06. Footer
+ *************************/
+ footer {
+     min-height: 150px;
+     padding: 50px 0;
+     background-color: #19121e;
+     border-top: 1px solid #e7e7e7;
+     border-bottom: 1px solid #e7e7e7;
+ }
+
+ footer a {
+    color: #8e8e8e;
+}
+
+footer p {
+    color: #8e8e8e;
+}
+
+.copyright {
+    text-align: left;
+    color: #8e8e8e;
+    font-size: 15px;
+}
+
+.social {
+    text-align: right;
+}
+
+.social-icons {
+    color: #8e8e8e;
+    margin-right: 20px;
 }
