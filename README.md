@@ -1,6 +1,6 @@
 # SEARCH THE STARS #
 
-Simple app that demonstrates the interaction between client and server built with Ajax, PHP and JQuery.
+App that demonstrates the interaction between client and server built with Ajax, PHP and JQuery.
 
 * Last modified: November 20th, 2016.
 * URL: http://kiddography.com/projects/stars-app/client.html
