@@ -27,7 +27,7 @@
  /* Star name search */
 function getStarsByName() {
     $.ajax({
-        url: "/projects/stars-app/server.php",
+        url: "/projects/stars/server.php",
         type: "POST",
         data: "star_name=" + $('#star_name').val(),
         dataType: "json",
@@ -51,7 +51,7 @@ function getStarsByName() {
 /* Distance filter: <5 */
 function getStarsByDistanceFilterOne() {
     $.ajax({
-        url: "/projects/stars-app/server.php",
+        url: "/projects/stars/server.php",
         type: "POST",
         data: "star_distance_one=" + $('.star_distance_one').val(),
         dataType: "json",
@@ -75,7 +75,7 @@ function getStarsByDistanceFilterOne() {
 /* Distance filter: 5 - 10 */
 function getStarsByDistanceFilterTwo() {
     $.ajax({
-        url: "/projects/stars-app/server.php",
+        url: "/projects/stars/server.php",
         type: "POST",
         data: "star_distance_two=" + $('.star_distance_two').val(),
         dataType: "json",
@@ -99,7 +99,7 @@ function getStarsByDistanceFilterTwo() {
 /* Distance filter: 10+ */
 function getStarsByDistanceFilterThree() {
     $.ajax({
-        url: "/projects/stars-app/server.php",
+        url: "/projects/stars/server.php",
         type: "POST",
         data: "star_distance_three=" + $('.star_distance_three').val(),
         dataType: "json",
@@ -123,7 +123,7 @@ function getStarsByDistanceFilterThree() {
 /* Constellation selector */
 function getStarsByConstellation() {
     $.ajax({
-        url: "/projects/stars-app/server.php",
+        url: "/projects/stars/server.php",
         type: "POST",
         data: "star_constellation=" + $('.star_constellation').val(),
         dataType: "json",
